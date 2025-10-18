@@ -13,7 +13,7 @@
 -- ==================================================
 
 -- ==================================================
--- TODO: Skapa dina tabeller här
+-- Skapa dina tabeller här
 -- ==================================================
 
 -- Tips för att komma igång:
@@ -31,7 +31,7 @@
 -- );
 
 -- ==================================================
--- TODO: Monster-tabellen
+-- Monster-tabellen
 -- ==================================================
 -- Ska innehålla:
 -- - Id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
@@ -46,12 +46,12 @@
 CREATE TABLE Monster (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL,
-    Type TEXT, NOT NULL
-    DangerLevel TEXT, NOT NULL CHECK(DangerLevel IN ('Low', 'Medium', 'High', 'Extreme'))
+    Type TEXT NOT NULL,
+    DangerLevel TEXT NOT NULL CHECK(DangerLevel IN ('Low', 'Medium', 'High', 'Extreme'))
 );
 
 -- ==================================================
--- TODO: Location-tabellen
+-- Location-tabellen
 -- ==================================================
 -- Ska innehålla:
 -- - Id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
@@ -60,10 +60,15 @@ CREATE TABLE Monster (
 -- - Coordinates (TEXT, nullable)
 
 -- Din kod här:
-
+CREATE TABLE Location (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL UNIQUE,
+    Region TEXT NOT NULL,
+    Coordinates TEXT nullable
+);
 
 -- ==================================================
--- TODO: Hunter-tabellen
+-- Hunter-tabellen
 -- ==================================================
 -- Ska innehålla:
 -- - Id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
@@ -74,10 +79,17 @@ CREATE TABLE Monster (
 -- CHECK(ExperienceLevel IN ('Rookie', 'Intermediate', 'Expert', 'Master'))
 
 -- Din kod här:
+CREATE TABLE Hunter (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL UNIQUE,
+    ExperienceLevel TEXT NOT NULL,
+    Coordinates TEXT, nullable CHECK(ExperienceLevel IN ('Rookie', 'Intermediate', 'Expert', 'Master'))
+);
+
 
 
 -- ==================================================
--- TODO: Observation-tabellen (VIKTIGAST - kopplingsstabell!)
+-- Observation-tabellen (VIKTIGAST - kopplingsstabell!)
 -- ==================================================
 -- Ska innehålla:
 -- - Id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
@@ -96,6 +108,24 @@ CREATE TABLE Monster (
 -- radering av monster/location/hunter som har observationer
 
 -- Din kod här:
+-- mall från https://campusmolndaleducation.github.io/csharp_cmyh/C-Sharp/databases/sql/constraints/
+CREATE TABLE Observation (
+    Id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    MonsterId   INTEGER NOT NULL,
+    LocationId   INTEGER NOT NULL,
+    HunterId   INTEGER NOT NULL,
+    Description  TEXT, nullable,
+    DateSeen  TEXT NOT NULL,
+    FOREIGN KEY (MonsterId)
+        REFERENCES Monster(Id)
+        ON DELETE RESTRICT
+    FOREIGN KEY (LocationId)
+        REFERENCES Location(Id)
+        ON DELETE RESTRICT
+    FOREIGN KEY (HunterId)
+        REFERENCES Hunter(Id)
+        ON DELETE RESTRICT
+);
 
 
 -- ==================================================
