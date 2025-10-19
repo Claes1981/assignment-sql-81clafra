@@ -31,4 +31,4 @@ namespace assignment_sql_81clafra.Services
             // Detta kräver anrop till både MonsterRepository och ObservationRepository
         }
     }
-}c
+}
