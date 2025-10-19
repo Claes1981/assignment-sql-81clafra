@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace assignment_sql_81clafra.Services
 {
+    // Code skeleton from https://github.com/Campus-Molndal-CLO25/Studiematerial/blob/main/2_databases/assignment/part_1/monster_tracker.md
     public class MonsterTrackerFacade
     {
         private MonsterRepository _monsterRepo;
