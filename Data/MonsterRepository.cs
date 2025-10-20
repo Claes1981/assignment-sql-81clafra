@@ -63,7 +63,7 @@ namespace assignment_sql_81clafra.Data
             // 2. Öppna connection och skapa command
             // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
             connection.Open();
-            SQLiteCommand command = connection.CreateCommand();
+            using SQLiteCommand command = connection.CreateCommand();
             command.CommandText = sqlCommandText;
 
             // 3. Använd ExecuteReader() för att få tillbaka en SQLiteDataReader
