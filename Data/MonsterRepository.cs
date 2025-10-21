@@ -163,15 +163,15 @@ namespace assignment_sql_81clafra.Data
             }
         }
 
-        static void DeletePerson()
+        static void DeleteMonster()
         {
             Console.WriteLine("\n--- Ta bort person ---");
 
-            // Visa alla personer först
-            ReadAllPersons();
+            // Visa alla monster först
+            ReadAllMonsters();
 
             // 1. Fråga vilket Id användaren vill ta bort
-            Console.Write("\nAnge Id på personen du vill ta bort: ");
+            Console.Write("\nAnge Id på monstret du vill ta bort: ");
 
             if (!int.TryParse(Console.ReadLine(), out int id))
             {
@@ -181,7 +181,7 @@ namespace assignment_sql_81clafra.Data
 
 
             // 2. Fråga om användaren är säker (säkerhetscheck!)
-            Console.Write($"Är du säker på att du vill ta bort person med Id {id}? (ja/nej): ");
+            Console.Write($"Är du säker på att du vill ta bort monstret med Id {id}? (ja/nej): ");
             string answer = Console.ReadLine();
 
             if (answer.ToLower() != "ja")
@@ -192,7 +192,7 @@ namespace assignment_sql_81clafra.Data
 
             // 3. Skapa SQL-frågan med parameter
             // Tipset: DELETE FROM Personer WHERE Id = @id
-            string sqlCommandText = "DELETE FROM Personer WHERE Id = @id"; // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+            string sqlCommandText = "DELETE FROM Monster WHERE Id = @id"; // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
             // 4. Öppna connection, skapa command, lägg till parameter, kör ExecuteNonQuery()
 
@@ -209,7 +209,7 @@ namespace assignment_sql_81clafra.Data
                     command.ExecuteNonQuery();
                 }
             }
-            Console.WriteLine("✅ Person borttagen!");
+            Console.WriteLine("✅ Monster borttaget!");
         }
     }
 }
