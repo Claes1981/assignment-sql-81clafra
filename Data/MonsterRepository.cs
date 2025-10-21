@@ -25,7 +25,7 @@ namespace assignment_sql_81clafra.Data
             string? type = Console.ReadLine();
 
             // 3. Fråga användaren efter riskgrad
-            Console.Write("Typ: ");
+            Console.Write("Dangerlevel: ");
             string? dangerLevel = Console.ReadLine();
 
             // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
