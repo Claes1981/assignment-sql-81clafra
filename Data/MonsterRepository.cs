@@ -94,15 +94,15 @@ namespace assignment_sql_81clafra.Data
             // Eller använd 'using' för att det ska hända automatiskt.
         }
 
-        static void UpdatePerson()
+        static void UpdateMonster()
         {
-            Console.WriteLine("\n--- Uppdatera person ---");
+            Console.WriteLine("\n--- Uppdatera monster ---");
 
-            // Först visar vi alla personer så användaren ser vilka som finns
-            ReadAllPersons();
+            // Först visar vi alla monster så användaren ser vilka som finns
+            ReadAllMonsters();
 
             // 1. Fråga vilket Id användaren vill uppdatera
-            Console.Write("\nAnge Id på personen du vill uppdatera: ");
+            Console.Write("\nAnge Id på monstret du vill uppdatera: ");
 
             // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
             if (!int.TryParse(Console.ReadLine(), out int id))
@@ -115,19 +115,23 @@ namespace assignment_sql_81clafra.Data
             Console.Write("Nytt namn: ");
             string? newName = Console.ReadLine();
 
-            // 3. Fråga efter ny ålder
-            Console.Write("Ny ålder: ");
+            // 3. Fråga efter ny typ
+            Console.Write("Ny typ: ");
+            string? newType = Console.ReadLine();
 
-            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
-            if (!int.TryParse(Console.ReadLine(), out int newAge))
+            // 3. Fråga efter ny dangerlevel
+            Console.Write("Ny dangerlevel: ");
+            string? newDangerLevel = Console.ReadLine();
+
+            if (newDangerLevel != "Low" && newDangerLevel != "Medium" && newDangerLevel != "High" && newDangerLevel != "Extreme")
             {
-                Console.WriteLine("Felaktig ålder!");
+                Console.WriteLine("Felaktig dangerlevel!");
                 return;
             }
 
             // 4. Skapa SQL-frågan med parametrar
             // Tipset: UPDATE Personer SET Namn = @namn, Ålder = @ålder WHERE Id = @id
-            string sqlCommandText = "UPDATE Personer SET Namn = @name, Ålder = @age WHERE Id = @id";
+            string sqlCommandText = "UPDATE Monster SET Name = @name, Type = @type, DangerLevel = @dangerlevel WHERE Id = @id";
 
             // 5. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = new(sqlConnectionString); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
