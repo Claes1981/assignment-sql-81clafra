@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Threading.Tasks;
+using assignment_sql_81clafra.Data;
 
 namespace assignment_sql_81clafra.Data
 {
@@ -30,7 +31,7 @@ namespace assignment_sql_81clafra.Data
 
             // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
-            using SQLiteConnection connection = new GetConnection();
+            using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             connection.Open();
@@ -54,7 +55,7 @@ namespace assignment_sql_81clafra.Data
         {
             Console.WriteLine("\n--- Alla monster ---");
 
-            using SQLiteConnection connection = new(sqlConnectionString); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+            using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             // 1. Skapa SQL-frågan
             // Tipset: SELECT Id, Namn, Ålder FROM Personer
@@ -134,7 +135,7 @@ namespace assignment_sql_81clafra.Data
             string sqlCommandText = "UPDATE Monster SET Name = @name, Type = @type, DangerLevel = @dangerlevel WHERE Id = @id";
 
             // 5. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
-            using SQLiteConnection connection = new(sqlConnectionString); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+            using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
             connection.Open();
             using (SQLiteCommand command = connection.CreateCommand()) // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
             {
@@ -196,7 +197,7 @@ namespace assignment_sql_81clafra.Data
 
             // 4. Öppna connection, skapa command, lägg till parameter, kör ExecuteNonQuery()
 
-            using (SQLiteConnection connection = new(sqlConnectionString))
+            using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
             {
                 connection.Open();
 
