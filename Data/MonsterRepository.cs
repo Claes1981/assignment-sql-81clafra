@@ -30,7 +30,7 @@ namespace assignment_sql_81clafra.Data
 
             // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
-            using SQLiteConnection connection = new SQLiteConnection(sqlConnectionString);
+            using SQLiteConnection connection = new GetConnection();
 
             // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             connection.Open();
