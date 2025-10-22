@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using assignment_sql_81clafra.UI;
+
+
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        ConsoleUI.MainMenu();
+    }
+}
