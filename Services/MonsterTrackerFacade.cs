@@ -26,10 +26,10 @@ namespace assignment_sql_81clafra.Services
         }
 
         // Mer komplexa operationer som kombinerar flera repositories
-        public List<Observation> GetObservationsByMonsterType(string type)
-        {
+        // public List<Observation> GetObservationsByMonsterType(string type)
+        // {
             // TODO: Hämta monster av typ, sedan deras observationer
             // Detta kräver anrop till både MonsterRepository och ObservationRepository
-        }
+        // }
     }
 }
