@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using assignment_sql_81clafra.Data;
+using assignment_sql_81clafra.Models;
 
 namespace assignment_sql_81clafra.Services
 {
@@ -27,6 +28,8 @@ namespace assignment_sql_81clafra.Services
         public void AddMonster(string name, string type, string dangerLevel)
         {
             // TODO: Skapa Monster-objekt och anropa _monsterRepo.Create()
+            var monster = new Monster { Name = name, Type = type, DangerLevel = dangerLevel };
+            _monsterRepo.CreateMonster(monster);
         }
 
         // Mer komplexa operationer som kombinerar flera repositories

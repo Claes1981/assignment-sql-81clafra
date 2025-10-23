@@ -13,7 +13,8 @@ namespace assignment_sql_81clafra.Data
         // Implementera CRUD-metoder här
         // Create, GetAll, GetById, Update, Delete
 
-        static void CreateMonster()
+        // Corrected with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-OnsK_24mQm.TzjLBsttzgQ#0
+        public void CreateMonster(Models.Monster monster)
         {
             Console.WriteLine("\n--- Lägg till nytt monster ---");
 
