@@ -17,7 +17,21 @@ namespace assignment_sql_81clafra.UI
             Console.WriteLine("4. Hantera Observationer");
             Console.WriteLine("0. Avsluta");
             Console.Write("Val: ");
-            if (!int.TryParse(Console.ReadLine(), out int choice))
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                switch(choice)
+                {
+                    case 1:
+                        MonsterManagerMenu();
+                        break;
+                    default:
+                        break;
+
+                }    
+
+            }
+            else
             {
 
                 return;
