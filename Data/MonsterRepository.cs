@@ -16,20 +16,6 @@ namespace assignment_sql_81clafra.Data
         // Corrected with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-OnsK_24mQm.TzjLBsttzgQ#0
         public void CreateMonster(Models.Monster monster)
         {
-            Console.WriteLine("\n--- Lägg till nytt monster ---");
-
-            // 1. Fråga användaren efter namn
-            Console.Write("Namn: ");
-            string? name = Console.ReadLine();
-
-            // 2. Fråga användaren efter typ av monster
-            Console.Write("Typ: ");
-            string? type = Console.ReadLine();
-
-            // 3. Fråga användaren efter riskgrad
-            Console.Write("Dangerlevel: ");
-            string? dangerLevel = Console.ReadLine();
-
             // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
@@ -47,14 +33,12 @@ namespace assignment_sql_81clafra.Data
 
             sqlCommand.ExecuteNonQuery();
 
-            // 5. Skriv ut ett be1kräftelsemeddelande
-
-            Console.WriteLine("✅ Monster tillagt!");
+            
         }
 
         static void ReadAllMonsters()
         {
-            Console.WriteLine("\n--- Alla monster ---");
+           
 
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
@@ -88,8 +72,7 @@ namespace assignment_sql_81clafra.Data
                 string type = reader.GetString(2);
                 string dangerLevel = reader.GetString(3);
 
-                // 6. Skriv ut varje monster på ett snyggt sätt
-                Console.WriteLine($"Id: {id}, Name: {name}, Type: {type}, Dangerlevel: {dangerLevel}"); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                
             }
 
             // TIPS: Glöm inte att stänga reader när du är klar!
@@ -98,38 +81,8 @@ namespace assignment_sql_81clafra.Data
 
         static void UpdateMonster()
         {
-            Console.WriteLine("\n--- Uppdatera monster ---");
-
-            // Först visar vi alla monster så användaren ser vilka som finns
-            ReadAllMonsters();
-
-            // 1. Fråga vilket Id användaren vill uppdatera
-            Console.Write("\nAnge Id på monstret du vill uppdatera: ");
-
-            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
-            if (!int.TryParse(Console.ReadLine(), out int id))
-            {
-                Console.WriteLine("Felaktigt Id!");
-                return;
-            }
-
-            // 2. Fråga efter nytt namn
-            Console.Write("Nytt namn: ");
-            string? newName = Console.ReadLine();
-
-            // 3. Fråga efter ny typ
-            Console.Write("Ny typ: ");
-            string? newType = Console.ReadLine();
-
-            // 3. Fråga efter ny dangerlevel
-            Console.Write("Ny dangerlevel: ");
-            string? newDangerLevel = Console.ReadLine();
-
-            if (newDangerLevel != "Low" && newDangerLevel != "Medium" && newDangerLevel != "High" && newDangerLevel != "Extreme")
-            {
-                Console.WriteLine("Felaktig dangerlevel!");
-                return;
-            }
+           
+            
 
             // 4. Skapa SQL-frågan med parametrar
             // Tipset: UPDATE Personer SET Namn = @namn, Ålder = @ålder WHERE Id = @id
@@ -152,45 +105,13 @@ namespace assignment_sql_81clafra.Data
                 // Om det är 0 betyder det att inget hittades med det Id:t
 
                 int affectedRows = command.ExecuteNonQuery();
-                if (affectedRows == 0)
-                {
-                    Console.WriteLine("❌ Inget monster med Id " + id + " hittades");
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine("✅ Monstret uppdaterat!");
-                    return;
-                }
+                
             }
         }
 
         static void DeleteMonster()
         {
-            Console.WriteLine("\n--- Ta bort person ---");
-
-            // Visa alla monster först
-            ReadAllMonsters();
-
-            // 1. Fråga vilket Id användaren vill ta bort
-            Console.Write("\nAnge Id på monstret du vill ta bort: ");
-
-            if (!int.TryParse(Console.ReadLine(), out int id))
-            {
-                Console.WriteLine("Felaktigt id!");
-                return;
-            }
-
-
-            // 2. Fråga om användaren är säker (säkerhetscheck!)
-            Console.Write($"Är du säker på att du vill ta bort monstret med Id {id}? (ja/nej): ");
-            string answer = Console.ReadLine();
-
-            if (answer.ToLower() != "ja")
-            {
-                Console.WriteLine("Avbrutet!");
-                return;
-            }
+           
 
             // 3. Skapa SQL-frågan med parameter
             // Tipset: DELETE FROM Personer WHERE Id = @id
@@ -211,7 +132,7 @@ namespace assignment_sql_81clafra.Data
                     command.ExecuteNonQuery();
                 }
             }
-            Console.WriteLine("✅ Monster borttaget!");
+            
         }
     }
 }
