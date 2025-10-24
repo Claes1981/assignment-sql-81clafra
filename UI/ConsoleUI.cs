@@ -49,7 +49,19 @@ namespace assignment_sql_81clafra.UI
             Console.WriteLine("5. Ta bort monster");
             Console.WriteLine("0. Tillbaka till huvudmeny");
             Console.Write("Val: ");
-            if (!int.TryParse(Console.ReadLine(), out int choice))
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                switch(choice)
+                {
+                    case 1:
+                        break;
+                    default:
+                        break;
+                
+                }
+            }
+            
+            
             {
 
                 return;
