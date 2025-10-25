@@ -71,6 +71,8 @@ namespace assignment_sql_81clafra.UI
                         Console.Write("Dangerlevel: ");
                         string? dangerLevel = Console.ReadLine();
 
+                        MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+                        facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
                         // 5. Skriv ut ett be1kräftelsemeddelande
                         Console.WriteLine("✅ Monster tillagt!");

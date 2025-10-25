@@ -19,10 +19,8 @@ namespace assignment_sql_81clafra.Data
         {
             // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
-            using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
-
             // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
-            connection.Open();
+            using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             // TODO: Does Id need to be inserted?
             string sqlCommandText = "INSERT INTO Monster (Name, Type, DangerLevel) VALUES (@name, @type, @dangerlevel)";

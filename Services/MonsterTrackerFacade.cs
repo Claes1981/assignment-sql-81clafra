@@ -27,7 +27,6 @@ namespace assignment_sql_81clafra.Services
         // Enkla operationer som delegerar till repositories
         public void AddMonster(string name, string type, string dangerLevel)
         {
-            // TODO: Skapa Monster-objekt och anropa _monsterRepo.Create()
             var monster = new Monster { Name = name, Type = type, DangerLevel = dangerLevel };
             _monsterRepo.CreateMonster(monster);
         }
