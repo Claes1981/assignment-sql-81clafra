@@ -34,12 +34,12 @@ namespace assignment_sql_81clafra.Data
 
             sqlCommand.ExecuteNonQuery();
 
-            
+
         }
 
         public List<Monster> ReadAllMonsters()
         {
-           
+
 
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
@@ -57,7 +57,7 @@ namespace assignment_sql_81clafra.Data
             // ExecuteReader() ger oss något som heter en "DataReader"
             // Det är som en pekare som går igenom alla rader i resultatet
             using SQLiteDataReader reader = command.ExecuteReader();
-            
+
             List<Monster> monsters = new List<Monster>();
 
             // 4. Loopa igenom resultatet med while (reader.Read())
@@ -84,14 +84,14 @@ namespace assignment_sql_81clafra.Data
 
             // TIPS: Glöm inte att stänga reader när du är klar!
             // Eller använd 'using' för att det ska hända automatiskt.
-            
+
             return monsters;
         }
 
         static void UpdateMonster()
         {
-           
-            
+
+
 
             // 4. Skapa SQL-frågan med parametrar
             // Tipset: UPDATE Personer SET Namn = @namn, Ålder = @ålder WHERE Id = @id
@@ -114,13 +114,13 @@ namespace assignment_sql_81clafra.Data
                 // Om det är 0 betyder det att inget hittades med det Id:t
 
                 int affectedRows = command.ExecuteNonQuery();
-                
+
             }
         }
 
         static void DeleteMonster()
         {
-           
+
 
             // 3. Skapa SQL-frågan med parameter
             // Tipset: DELETE FROM Personer WHERE Id = @id
@@ -141,7 +141,7 @@ namespace assignment_sql_81clafra.Data
                     command.ExecuteNonQuery();
                 }
             }
-            
+
         }
     }
 }

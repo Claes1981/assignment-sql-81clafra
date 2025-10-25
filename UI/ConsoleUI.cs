@@ -82,7 +82,8 @@ namespace assignment_sql_81clafra.UI
                         Console.WriteLine("\n--- Alla monster ---");
 
                         // 1. Hämta alla monster
-                        List<Monster> monsters = MonsterTrackerFacade.GetAllMonsters();
+                        MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+                        List<Monster> monsters = facade.GetAllMonsters();
 
                         // 6. Skriv ut varje monster på ett snyggt sätt
                         // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
