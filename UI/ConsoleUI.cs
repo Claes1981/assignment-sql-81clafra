@@ -96,7 +96,7 @@ namespace assignment_sql_81clafra.UI
                         Console.Write("\nAnge Id på monstret du vill uppdatera: ");
 
                         // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
-                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
                         {
                             Console.WriteLine("Felaktigt Id!");
                             return;
@@ -131,7 +131,7 @@ namespace assignment_sql_81clafra.UI
                         // 1. Fråga vilket Id användaren vill ta bort
                         Console.Write("\nAnge Id på monstret du vill ta bort: ");
 
-                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        if (!int.TryParse(Console.ReadLine(), out int idToDelete))
                         {
                             Console.WriteLine("Felaktigt id!");
                             return;
@@ -139,7 +139,7 @@ namespace assignment_sql_81clafra.UI
 
 
                         // 2. Fråga om användaren är säker (säkerhetscheck!)
-                        Console.Write($"Är du säker på att du vill ta bort monstret med Id {id}? (ja/nej): ");
+                        Console.Write($"Är du säker på att du vill ta bort monstret med Id {idToDelete}? (ja/nej): ");
                         string answer = Console.ReadLine();
 
                         if (answer.ToLower() != "ja")
