@@ -90,7 +90,7 @@ namespace assignment_sql_81clafra.UI
                         Console.WriteLine("\n--- Uppdatera monster ---");
 
                         // Först visar vi alla monster så användaren ser vilka som finns
-                        ReadAllMonsters();
+                        OutputAllMonsters();
 
                         // 1. Fråga vilket Id användaren vill uppdatera
                         Console.Write("\nAnge Id på monstret du vill uppdatera: ");
@@ -126,7 +126,7 @@ namespace assignment_sql_81clafra.UI
                         Console.WriteLine("\n--- Ta bort monster ---");
 
                         // Visa alla monster först
-                        ReadAllMonsters();
+                        OutputAllMonsters();
 
                         // 1. Fråga vilket Id användaren vill ta bort
                         Console.Write("\nAnge Id på monstret du vill ta bort: ");
