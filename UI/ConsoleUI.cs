@@ -79,19 +79,7 @@ namespace assignment_sql_81clafra.UI
                         break;
 
                     case 2:
-                        Console.WriteLine("\n--- Alla monster ---");
-
-                        // 1. Hämta alla monster
-                        MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
-                        List<Monster> monsters = facade.GetAllMonsters();
-
-                        // 6. Skriv ut varje monster på ett snyggt sätt
-                        // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
-                        foreach (Monster monster in monsters)
-                        {
-
-                            Console.WriteLine($"Id: {monster.Id}, Name: {monster.Name}, Type: {monster.Type}, Dangerlevel: {monster.DangerLevel}");
-                        }
+                        OutputAllMonsters();
                         break;
 
                     case 3:
@@ -176,6 +164,23 @@ namespace assignment_sql_81clafra.UI
             {
 
                 return;
+            }
+
+            static void OutputAllMonsters()
+            {
+                Console.WriteLine("\n--- Alla monster ---");
+
+                // 1. Hämta alla monster
+                MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+                List<Monster> monsters = facade.GetAllMonsters();
+
+                // 6. Skriv ut varje monster på ett snyggt sätt
+                // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
+                foreach (Monster monster in monsters)
+                {
+
+                    Console.WriteLine($"Id: {monster.Id}, Name: {monster.Name}, Type: {monster.Type}, Dangerlevel: {monster.DangerLevel}");
+                }
             }
         }
     }
