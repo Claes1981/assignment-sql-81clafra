@@ -85,7 +85,12 @@ namespace assignment_sql_81clafra.UI
                         List<Monster> monsters = MonsterTrackerFacade.GetAllMonsters();
 
                         // 6. Skriv ut varje monster på ett snyggt sätt
-                        Console.WriteLine($"Id: {id}, Name: {name}, Type: {type}, Dangerlevel: {dangerLevel}"); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
+                        // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
+                        foreach (Monster monster in monsters)
+                        {
+
+                            Console.WriteLine($"Id: {monster.Id}, Name: {monster.Name}, Type: {monster.Type}, Dangerlevel: {monster.DangerLevel}");
+                        }
                         break;
 
                     case 3:

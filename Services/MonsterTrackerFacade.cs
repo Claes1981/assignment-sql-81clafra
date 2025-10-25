@@ -32,7 +32,7 @@ namespace assignment_sql_81clafra.Services
             _monsterRepo.CreateMonster(monster);
         }
 
-        public static List<Monster> GetAllMonsters()
+        public List<Monster> GetAllMonsters()
         {
             return _monsterRepo.ReadAllMonsters();
         }
