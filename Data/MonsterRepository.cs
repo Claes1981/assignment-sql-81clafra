@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Threading.Tasks;
 using assignment_sql_81clafra.Data;
+using assignment_sql_81clafra.Models;
 
 namespace assignment_sql_81clafra.Data
 {
@@ -36,7 +37,7 @@ namespace assignment_sql_81clafra.Data
             
         }
 
-        static void ReadAllMonsters()
+        public List<Monster> ReadAllMonsters()
         {
            
 
@@ -56,6 +57,8 @@ namespace assignment_sql_81clafra.Data
             // ExecuteReader() ger oss något som heter en "DataReader"
             // Det är som en pekare som går igenom alla rader i resultatet
             using SQLiteDataReader reader = command.ExecuteReader();
+            
+            List<Monster> monsters = new List<Monster>();
 
             // 4. Loopa igenom resultatet med while (reader.Read())
             // reader.Read() flyttar fram pekaren till nästa rad och returnerar true om det finns fler rader
@@ -72,11 +75,17 @@ namespace assignment_sql_81clafra.Data
                 string type = reader.GetString(2);
                 string dangerLevel = reader.GetString(3);
 
-                
+                // 6. Skapa ett Monster-objekt och lägg det i listan
+                Monster monster = new Monster(id, name, type, dangerLevel);
+                monsters.Add(monster);
             }
+
+
 
             // TIPS: Glöm inte att stänga reader när du är klar!
             // Eller använd 'using' för att det ska hända automatiskt.
+            
+            return monsters;
         }
 
         static void UpdateMonster()

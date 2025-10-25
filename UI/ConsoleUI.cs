@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using assignment_sql_81clafra.Data;
+using assignment_sql_81clafra.Models;
+using assignment_sql_81clafra.Services;
 
 namespace assignment_sql_81clafra.UI
 {
@@ -77,6 +80,9 @@ namespace assignment_sql_81clafra.UI
 
                     case 2:
                         Console.WriteLine("\n--- Alla monster ---");
+
+                        // 1. Hämta alla monster
+                        List<Monster> monsters = MonsterTrackerFacade.GetAllMonsters();
 
                         // 6. Skriv ut varje monster på ett snyggt sätt
                         Console.WriteLine($"Id: {id}, Name: {name}, Type: {type}, Dangerlevel: {dangerLevel}"); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 

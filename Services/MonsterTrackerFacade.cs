@@ -32,6 +32,11 @@ namespace assignment_sql_81clafra.Services
             _monsterRepo.CreateMonster(monster);
         }
 
+        public static List<Monster> GetAllMonsters()
+        {
+            return _monsterRepo.ReadAllMonsters();
+        }
+
         // Mer komplexa operationer som kombinerar flera repositories
         // public List<Observation> GetObservationsByMonsterType(string type)
         // {
