@@ -28,9 +28,9 @@ namespace assignment_sql_81clafra.Data
             string sqlCommandText = "INSERT INTO Monster (Name, Type, DangerLevel) VALUES (@name, @type, @dangerlevel)";
 
             using var sqlCommand = new SQLiteCommand(sqlCommandText, connection);
-            sqlCommand.Parameters.AddWithValue("@name", name);
-            sqlCommand.Parameters.AddWithValue("@type", type);
-            sqlCommand.Parameters.AddWithValue("@dangerlevel", dangerLevel);
+            sqlCommand.Parameters.AddWithValue("@name", monster.Name);
+            sqlCommand.Parameters.AddWithValue("@type", monster.Type);
+            sqlCommand.Parameters.AddWithValue("@dangerlevel", monster.DangerLevel);
 
             sqlCommand.ExecuteNonQuery();
 
