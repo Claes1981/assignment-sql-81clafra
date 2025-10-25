@@ -49,7 +49,7 @@ namespace assignment_sql_81clafra.Data
 
             // 2. Öppna connection och skapa command
             // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
-            connection.Open();
+  
             using SQLiteCommand command = connection.CreateCommand();
             command.CommandText = sqlCommandText;
 
