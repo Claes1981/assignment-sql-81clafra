@@ -13,22 +13,21 @@ namespace assignment_sql_81clafra.Data
         // Written with help from Perplexity, https://www.perplexity.ai/search/i-have-this-sqlite-schema-file-60Ef84DKTFyjOfb7WaOXpg#0
         public void CreateDatabase()
         {
-            var dbPath = "MonsterTracker.db";
-            var schema = File.ReadAllText("monstertracker_schema.sql");
+            var databaseFileName = "MonsterTracker.db";
+            var sqlSchema = File.ReadAllText("monstertracker_schema.sql");
 
             using SQLiteConnection connection = DatabaseConnection.GetConnection();
 
             // Create the database file if it doesn't exist
-            if (!File.Exists(dbPath))
-                SQLiteConnection.CreateFile(dbPath);
+            if (!File.Exists(databaseFileName))
+                SQLiteConnection.CreateFile(databaseFileName);
 
             // Run the schema script
-            using (var cmd = connection.CreateCommand())
+            using (var sqlCommand = connection.CreateCommand())
             {
-                cmd.CommandText = schema;
-                cmd.ExecuteNonQuery();
+                sqlCommand.CommandText = sqlSchema;
+                sqlCommand.ExecuteNonQuery();
             }
-
 
             // Console.WriteLine("SQLite database created with schema.");
         }
