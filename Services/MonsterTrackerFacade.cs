@@ -25,6 +25,12 @@ namespace assignment_sql_81clafra.Services
         }
 
         // Enkla operationer som delegerar till repositories
+        public void CreateDatabase()
+        {
+            DatabaseCreation databaseCreationObject = new DatabaseCreation(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+            databaseCreationObject.CreateDatabase();
+        }
+        
         public void AddMonster(string name, string type, string dangerLevel)
         {
             var monster = new Monster { Name = name, Type = type, DangerLevel = dangerLevel };
