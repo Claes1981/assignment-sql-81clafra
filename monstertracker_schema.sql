@@ -3,6 +3,8 @@
 -- Database normalization: 3NF (Third Normal Form)
 -- Created for Campus Mölndal - Databashantering och design
 
+-- Corrected with help from Perplexity, https://www.perplexity.ai/search/i-have-this-sqlite-schema-file-60Ef84DKTFyjOfb7WaOXpg#0
+
 -- ==================================================
 -- VIKTIGT: Foreign Key support i SQLite
 -- ==================================================
@@ -64,7 +66,7 @@ CREATE TABLE Location (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL UNIQUE,
     Region TEXT NOT NULL,
-    Coordinates TEXT nullable
+    Coordinates TEXT
 );
 
 -- ==================================================
@@ -82,8 +84,8 @@ CREATE TABLE Location (
 CREATE TABLE Hunter (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL UNIQUE,
-    ExperienceLevel TEXT NOT NULL,
-    Coordinates TEXT, nullable CHECK(ExperienceLevel IN ('Rookie', 'Intermediate', 'Expert', 'Master'))
+    ExperienceLevel TEXT NOT NULL CHECK(ExperienceLevel IN ('Rookie', 'Intermediate', 'Expert', 'Master')),
+    Coordinates TEXT
 );
 
 
@@ -114,7 +116,7 @@ CREATE TABLE Observation (
     MonsterId   INTEGER NOT NULL,
     LocationId   INTEGER NOT NULL,
     HunterId   INTEGER NOT NULL,
-    Description  TEXT, nullable,
+    Description  TEXT,
     DateSeen  TEXT NOT NULL,
     FOREIGN KEY (MonsterId)
         REFERENCES Monster(Id)
