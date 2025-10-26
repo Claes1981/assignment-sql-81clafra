@@ -13,6 +13,12 @@ namespace assignment_sql_81clafra.Data
         {
             var connection = new SQLiteConnection("Data Source=MonsterTracker.db;Version=3;");
             connection.Open();
+
+            // Aktivera foreign keys
+            // Implementation from https://campusmolndaleducation.github.io/csharp_cmyh/C-Sharp/databases/ado_net_sqlite/#best-practices
+            using var sqlCommand = new SQLiteCommand("PRAGMA foreign_keys = ON", connection);
+            sqlCommand.ExecuteNonQuery();
+
             return connection;
         }
     }

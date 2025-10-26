@@ -22,13 +22,6 @@ namespace assignment_sql_81clafra.Data
             if (!File.Exists(dbPath))
                 SQLiteConnection.CreateFile(dbPath);
 
-            // Enable foreign keys as mentioned in schema comments
-            using (var cmd = connection.CreateCommand())
-            {
-                cmd.CommandText = "PRAGMA foreign_keys = ON;";
-                cmd.ExecuteNonQuery();
-            }
-
             // Run the schema script
             using (var cmd = connection.CreateCommand())
             {
