@@ -42,11 +42,17 @@ namespace assignment_sql_81clafra.Services
             return _monsterRepo.ReadAllMonsters();
         }
 
+        public void UpdateMonster(int idToUpdate, string? newName, string? newType, string? newDangerLevel)
+        {
+            var monsterToUpdate = new Monster { Id = idToUpdate, Name = newName, Type = newType, DangerLevel = newDangerLevel };
+            _monsterRepo.UpdateMonster(monsterToUpdate);
+        }
+
         // Mer komplexa operationer som kombinerar flera repositories
         // public List<Observation> GetObservationsByMonsterType(string type)
         // {
-            // TODO: Hämta monster av typ, sedan deras observationer
-            // Detta kräver anrop till både MonsterRepository och ObservationRepository
+        // TODO: Hämta monster av typ, sedan deras observationer
+        // Detta kräver anrop till både MonsterRepository och ObservationRepository
         // }
     }
 }
