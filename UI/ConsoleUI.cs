@@ -14,32 +14,35 @@ namespace assignment_sql_81clafra.UI
 
         public static void MainMenu()
         {
-            Console.WriteLine("=== Huvudmeny ===");
-            Console.WriteLine("1. Hantera Monster");
-            Console.WriteLine("2. Hantera Platser");
-            Console.WriteLine("3. Hantera Jägare");
-            Console.WriteLine("4. Hantera Observationer");
-            Console.WriteLine("0. Avsluta");
-            Console.Write("Val: ");
-
-            if (int.TryParse(Console.ReadLine(), out int choice))
+            while (true)
             {
-                switch (choice)
+                Console.WriteLine("=== Huvudmeny ===");
+                Console.WriteLine("1. Hantera Monster");
+                Console.WriteLine("2. Hantera Platser");
+                Console.WriteLine("3. Hantera Jägare");
+                Console.WriteLine("4. Hantera Observationer");
+                Console.WriteLine("0. Avsluta");
+                Console.Write("Val: ");
+
+                if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    case 1:
-                        MonsterManagerMenu();
-                        break;
-                    default:
-                        break;
+                    switch (choice)
+                    {
+                        case 1:
+                            MonsterManagerMenu();
+                            break;
+                        default:
+                            break;
+
+                    }
 
                 }
+                else
+                {
 
+                }
             }
-            else
-            {
-
-                return;
-            }
+            return;
         }
 
 
@@ -133,7 +136,6 @@ namespace assignment_sql_81clafra.UI
                             return;
                         }
 
-
                         // 2. Fråga om användaren är säker (säkerhetscheck!)
                         Console.Write($"Är du säker på att du vill ta bort monstret med Id {idToDelete}? (ja/nej): ");
                         string answer = Console.ReadLine();
@@ -150,14 +152,13 @@ namespace assignment_sql_81clafra.UI
                         break;
 
                     case 0:
-                        break;
+                        return;
 
                     default:
                         break;
 
                 }
             }
-
 
             {
 
