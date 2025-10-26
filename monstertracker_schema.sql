@@ -45,7 +45,7 @@
 -- CHECK(DangerLevel IN ('Low', 'Medium', 'High', 'Extreme'))
 
 -- Din kod här:
-CREATE TABLE Monster (
+CREATE TABLE IF NOT EXISTS Monster (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL,
     Type TEXT NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE Monster (
 -- - Coordinates (TEXT, nullable)
 
 -- Din kod här:
-CREATE TABLE Location (
+CREATE TABLE IF NOT EXISTS Location (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL UNIQUE,
     Region TEXT NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE Location (
 -- CHECK(ExperienceLevel IN ('Rookie', 'Intermediate', 'Expert', 'Master'))
 
 -- Din kod här:
-CREATE TABLE Hunter (
+CREATE TABLE IF NOT EXISTS Hunter (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL UNIQUE,
     ExperienceLevel TEXT NOT NULL CHECK(ExperienceLevel IN ('Rookie', 'Intermediate', 'Expert', 'Master')),
@@ -111,7 +111,7 @@ CREATE TABLE Hunter (
 
 -- Din kod här:
 -- mall från https://campusmolndaleducation.github.io/csharp_cmyh/C-Sharp/databases/sql/constraints/
-CREATE TABLE Observation (
+CREATE TABLE IF NOT EXISTS Observation (
     Id      INTEGER PRIMARY KEY AUTOINCREMENT,
     MonsterId   INTEGER NOT NULL,
     LocationId   INTEGER NOT NULL,
