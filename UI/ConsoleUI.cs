@@ -45,6 +45,7 @@ namespace assignment_sql_81clafra.UI
 
         public static void MonsterManagerMenu()
         {
+            MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
             Console.WriteLine("=== HANTERA MONSTER ===");
             Console.WriteLine("1. Lägg till nytt monster");
             Console.WriteLine("2. Visa alla monster");
@@ -71,12 +72,10 @@ namespace assignment_sql_81clafra.UI
                         // 3. Fråga användaren efter riskgrad
                         string? dangerLevel = InputDangerLevel();
 
-                        MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
                         facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
                         // 5. Skriv ut ett be1kräftelsemeddelande
                         Console.WriteLine("✅ Monster tillagt!");
-
 
                         break;
 
@@ -113,9 +112,10 @@ namespace assignment_sql_81clafra.UI
                         string? newType = Console.ReadLine();
 
                         // 3. Fråga efter ny dangerlevel
-                        Console.Write("Ny dangerlevel: ");
                         string? newDangerLevel = InputDangerLevel();
 
+                        facade.UpdateMonster(idToUpdate, newName, newType, newDangerLevel);
+                        
                         break;
 
                     case 5:
