@@ -9,6 +9,7 @@ using assignment_sql_81clafra.Services;
 namespace assignment_sql_81clafra.UI
 {
     public class ConsoleUI
+    // Created with guidance from Perplexity, https://www.perplexity.ai/search/what-is-a-clean-nice-way-of-co-WWwuALz6SlWtRyInK_Bz4Q#2
     {
 
         public static void MainMenu()
@@ -68,8 +69,7 @@ namespace assignment_sql_81clafra.UI
                         string? type = Console.ReadLine();
 
                         // 3. Fråga användaren efter riskgrad
-                        Console.Write("Dangerlevel: ");
-                        string? dangerLevel = Console.ReadLine();
+                        string? dangerLevel = InputDangerLevel();
 
                         MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
                         facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
@@ -114,13 +114,7 @@ namespace assignment_sql_81clafra.UI
 
                         // 3. Fråga efter ny dangerlevel
                         Console.Write("Ny dangerlevel: ");
-                        string? newDangerLevel = Console.ReadLine();
-
-                        if (newDangerLevel != "Low" && newDangerLevel != "Medium" && newDangerLevel != "High" && newDangerLevel != "Extreme")
-                        {
-                            Console.WriteLine("Felaktig dangerlevel!");
-                            return;
-                        }
+                        string? newDangerLevel = InputDangerLevel();
 
                         break;
 
@@ -182,7 +176,26 @@ namespace assignment_sql_81clafra.UI
                 {
 
                     Console.WriteLine($"Id: {monster.Id}, Name: {monster.Name}, Type: {monster.Type}, Dangerlevel: {monster.DangerLevel}");
+
                 }
+            }
+
+            static string? InputDangerLevel()
+            {
+                // 3. Fråga användaren efter riskgrad
+                string[] validDangerLevels = { "Low", "Medium", "High", "Extreme" };
+                string? dangerLevel = "";
+                do
+                {
+                    Console.Write("Dangerlevel: Low, Medium, High eller Extreme: ");
+                    dangerLevel = Console.ReadLine();
+                    if (!validDangerLevels.Contains(dangerLevel))
+                    {
+                        Console.WriteLine("Felaktigt dangerlevel");
+                    }
+                }
+                while (!validDangerLevels.Contains(dangerLevel));
+                return dangerLevel;
             }
         }
     }
