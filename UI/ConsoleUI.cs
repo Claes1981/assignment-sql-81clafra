@@ -144,6 +144,8 @@ namespace assignment_sql_81clafra.UI
                             return;
                         }
 
+                        facade.DeleteMonster(idToDelete);
+                        
                         Console.WriteLine("✅ Monster borttaget!");
                         break;
 

@@ -110,10 +110,8 @@ namespace assignment_sql_81clafra.Data
             }
         }
 
-        static void DeleteMonster(Monster monster)
+        public void DeleteMonster(Monster monster)
         {
-
-
             // 3. Skapa SQL-frågan med parameter
             // Tipset: DELETE FROM Personer WHERE Id = @id
             string sqlCommandText = "DELETE FROM Monster WHERE Id = @id"; // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
@@ -122,8 +120,6 @@ namespace assignment_sql_81clafra.Data
 
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
             {
-                connection.Open();
-
                 using (SQLiteCommand command = connection.CreateCommand()) // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
                 {
                     command.CommandText = sqlCommandText;

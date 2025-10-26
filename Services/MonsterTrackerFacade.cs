@@ -30,7 +30,7 @@ namespace assignment_sql_81clafra.Services
             DatabaseCreation databaseCreationObject = new DatabaseCreation(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
             databaseCreationObject.CreateDatabase();
         }
-        
+
         public void AddMonster(string name, string type, string dangerLevel)
         {
             var monster = new Monster { Name = name, Type = type, DangerLevel = dangerLevel };
@@ -46,6 +46,12 @@ namespace assignment_sql_81clafra.Services
         {
             var monsterToUpdate = new Monster { Id = idToUpdate, Name = newName, Type = newType, DangerLevel = newDangerLevel };
             _monsterRepo.UpdateMonster(monsterToUpdate);
+        }
+
+        public void DeleteMonster(int idToDelete)
+        {
+            var monsterToDelete = new Monster { Id = idToDelete};
+            _monsterRepo.DeleteMonster(monsterToDelete);
         }
 
         // Mer komplexa operationer som kombinerar flera repositories
