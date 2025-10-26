@@ -31,6 +31,10 @@ namespace assignment_sql_81clafra.UI
                         case 1:
                             MonsterManagerMenu();
                             break;
+
+                        case 0:
+                            return;
+                        
                         default:
                             break;
 
@@ -42,7 +46,6 @@ namespace assignment_sql_81clafra.UI
 
                 }
             }
-            return;
         }
 
 
