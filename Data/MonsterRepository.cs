@@ -22,7 +22,6 @@ namespace assignment_sql_81clafra.Data
             // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
-            // TODO: Does Id need to be inserted?
             string sqlCommandText = "INSERT INTO Monster (Name, Type, DangerLevel) VALUES (@name, @type, @dangerlevel)";
 
             using var sqlCommand = new SQLiteCommand(sqlCommandText, connection);
@@ -31,8 +30,6 @@ namespace assignment_sql_81clafra.Data
             sqlCommand.Parameters.AddWithValue("@dangerlevel", monster.DangerLevel);
 
             sqlCommand.ExecuteNonQuery();
-
-
         }
 
         public List<Monster> ReadAllMonsters()

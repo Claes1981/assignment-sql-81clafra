@@ -16,7 +16,6 @@ namespace assignment_sql_81clafra.Data
             // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
-            // TODO: Does Id need to be inserted?
             string sqlCommandText = "INSERT INTO Hunter (Name, ExperienceLevel) VALUES (@name, @experiencelevel)";
 
             using var sqlCommand = new SQLiteCommand(sqlCommandText, connection);
@@ -24,8 +23,6 @@ namespace assignment_sql_81clafra.Data
             sqlCommand.Parameters.AddWithValue("@experiencelevel", hunter.ExperienceLevel);
 
             sqlCommand.ExecuteNonQuery();
-
-
         }
 
         public List<Hunter> ReadAllHunters()
