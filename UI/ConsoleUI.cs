@@ -56,120 +56,126 @@ namespace assignment_sql_81clafra.UI
         public static void MonsterManagerMenu()
         {
             MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
-            Console.WriteLine("=== HANTERA MONSTER ===");
-            Console.WriteLine("1. Lägg till nytt monster");
-            Console.WriteLine("2. Visa alla monster");
-            Console.WriteLine("3. Sök monster (efter namn)");
-            Console.WriteLine("4. Uppdatera monster");
-            Console.WriteLine("5. Ta bort monster");
-            Console.WriteLine("0. Tillbaka till huvudmeny");
-            Console.Write("Val: ");
-            if (int.TryParse(Console.ReadLine(), out int choice))
+
+            while (true)
             {
-                switch (choice)
+                Console.WriteLine("=== HANTERA MONSTER ===");
+                Console.WriteLine("1. Lägg till nytt monster");
+                Console.WriteLine("2. Visa alla monster");
+                Console.WriteLine("3. Sök monster (efter namn)");
+                Console.WriteLine("4. Uppdatera monster");
+                Console.WriteLine("5. Ta bort monster");
+                Console.WriteLine("0. Tillbaka till huvudmeny");
+                Console.Write("Val: ");
+                if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    case 1:
-                        Console.WriteLine("\n--- Lägg till nytt monster ---");
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("\n--- Lägg till nytt monster ---");
 
-                        // 1. Fråga användaren efter namn
-                        Console.Write("Namn: ");
-                        string? name = Console.ReadLine();
+                            // 1. Fråga användaren efter namn
+                            Console.Write("Namn: ");
+                            string? name = Console.ReadLine();
 
-                        // 2. Fråga användaren efter typ av monster
-                        Console.Write("Typ: ");
-                        string? type = Console.ReadLine();
+                            // 2. Fråga användaren efter typ av monster
+                            Console.Write("Typ: ");
+                            string? type = Console.ReadLine();
 
-                        // 3. Fråga användaren efter riskgrad
-                        string? dangerLevel = InputDangerLevel();
+                            // 3. Fråga användaren efter riskgrad
+                            string? dangerLevel = InputDangerLevel();
 
-                        facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
-                        // 5. Skriv ut ett be1kräftelsemeddelande
-                        Console.WriteLine("✅ Monster tillagt!");
+                            // 5. Skriv ut ett be1kräftelsemeddelande
+                            Console.WriteLine("✅ Monster tillagt!");
 
-                        break;
+                            break;
 
-                    case 2:
-                        OutputAllMonsters();
-                        break;
+                        case 2:
+                            OutputAllMonsters();
+                            break;
 
-                    case 3:
+                        case 3:
+                            Console.WriteLine("Funktion ej aktiverad.");
+                            Console.WriteLine("Betala för en VG-version för åtkomst.");
+                            break;
 
-                        break;
+                        case 4:
+                            Console.WriteLine("\n--- Uppdatera monster ---");
 
-                    case 4:
-                        Console.WriteLine("\n--- Uppdatera monster ---");
+                            // Först visar vi alla monster så användaren ser vilka som finns
+                            OutputAllMonsters();
 
-                        // Först visar vi alla monster så användaren ser vilka som finns
-                        OutputAllMonsters();
+                            // 1. Fråga vilket Id användaren vill uppdatera
+                            Console.Write("\nAnge Id på monstret du vill uppdatera: ");
 
-                        // 1. Fråga vilket Id användaren vill uppdatera
-                        Console.Write("\nAnge Id på monstret du vill uppdatera: ");
+                            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
+                            {
+                                Console.WriteLine("Felaktigt Id!");
+                                return;
+                            }
 
-                        // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
-                        if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
-                        {
-                            Console.WriteLine("Felaktigt Id!");
+                            // 2. Fråga efter nytt namn
+                            Console.Write("Nytt namn: ");
+                            string? newName = Console.ReadLine();
+
+                            // 3. Fråga efter ny typ
+                            Console.Write("Ny typ: ");
+                            string? newType = Console.ReadLine();
+
+                            // 3. Fråga efter ny dangerlevel
+                            string? newDangerLevel = InputDangerLevel();
+
+                            facade.UpdateMonster(idToUpdate, newName, newType, newDangerLevel);
+
+                            break;
+
+                        case 5:
+                            Console.WriteLine("\n--- Ta bort monster ---");
+
+                            // Visa alla monster först
+                            OutputAllMonsters();
+
+                            // 1. Fråga vilket Id användaren vill ta bort
+                            Console.Write("\nAnge Id på monstret du vill ta bort: ");
+
+                            if (!int.TryParse(Console.ReadLine(), out int idToDelete))
+                            {
+                                Console.WriteLine("Felaktigt id!");
+                                return;
+                            }
+
+                            // 2. Fråga om användaren är säker (säkerhetscheck!)
+                            Console.Write($"Är du säker på att du vill ta bort monstret med Id {idToDelete}? (ja/nej): ");
+                            string answer = Console.ReadLine();
+
+                            if (answer.ToLower() != "ja")
+                            {
+                                Console.WriteLine("Avbrutet!");
+                                return;
+                            }
+
+                            facade.DeleteMonster(idToDelete);
+
+                            Console.WriteLine("✅ Monster borttaget!");
+                            break;
+
+                        case 0:
                             return;
-                        }
 
-                        // 2. Fråga efter nytt namn
-                        Console.Write("Nytt namn: ");
-                        string? newName = Console.ReadLine();
+                        default:
+                            Console.WriteLine("Felaktigt val");
+                            break;
 
-                        // 3. Fråga efter ny typ
-                        Console.Write("Ny typ: ");
-                        string? newType = Console.ReadLine();
-
-                        // 3. Fråga efter ny dangerlevel
-                        string? newDangerLevel = InputDangerLevel();
-
-                        facade.UpdateMonster(idToUpdate, newName, newType, newDangerLevel);
-                        
-                        break;
-
-                    case 5:
-                        Console.WriteLine("\n--- Ta bort monster ---");
-
-                        // Visa alla monster först
-                        OutputAllMonsters();
-
-                        // 1. Fråga vilket Id användaren vill ta bort
-                        Console.Write("\nAnge Id på monstret du vill ta bort: ");
-
-                        if (!int.TryParse(Console.ReadLine(), out int idToDelete))
-                        {
-                            Console.WriteLine("Felaktigt id!");
-                            return;
-                        }
-
-                        // 2. Fråga om användaren är säker (säkerhetscheck!)
-                        Console.Write($"Är du säker på att du vill ta bort monstret med Id {idToDelete}? (ja/nej): ");
-                        string answer = Console.ReadLine();
-
-                        if (answer.ToLower() != "ja")
-                        {
-                            Console.WriteLine("Avbrutet!");
-                            return;
-                        }
-
-                        facade.DeleteMonster(idToDelete);
-                        
-                        Console.WriteLine("✅ Monster borttaget!");
-                        break;
-
-                    case 0:
-                        return;
-
-                    default:
-                        break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Felaktigt val");
 
                 }
-            }
-
-            {
-
-                return;
             }
 
             static void OutputAllMonsters()
