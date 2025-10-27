@@ -32,6 +32,10 @@ namespace assignment_sql_81clafra.UI
                             MonsterManagerMenu();
                             break;
 
+                        case 2:
+                            LocationManagerMenu();
+                            break;
+                        
                         case 3:
                             HunterManagerMenu();
                             break;
@@ -87,7 +91,7 @@ namespace assignment_sql_81clafra.UI
 
                             facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
-                            // 5. Skriv ut ett bekräftelsemeddelande
+                            // 4. Skriv ut ett bekräftelsemeddelande
                             Console.WriteLine("✅ Monster tillagt!");
 
                             break;
@@ -186,7 +190,7 @@ namespace assignment_sql_81clafra.UI
                 MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
                 List<Monster> monsters = facade.GetAllMonsters();
 
-                // 6. Skriv ut varje monster på ett snyggt sätt
+                // 2. Skriv ut varje monster på ett snyggt sätt
                 // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
                 foreach (Monster monster in monsters)
                 {
@@ -198,7 +202,7 @@ namespace assignment_sql_81clafra.UI
 
             static string? InputDangerLevel()
             {
-                // 3. Fråga användaren efter riskgrad
+                // 1. Fråga användaren efter riskgrad
                 string[] validDangerLevels = { "Low", "Medium", "High", "Extreme" };
                 string? dangerLevel = "";
                 do
@@ -212,6 +216,145 @@ namespace assignment_sql_81clafra.UI
                 }
                 while (!validDangerLevels.Contains(dangerLevel));
                 return dangerLevel;
+            }
+        
+    }
+
+        public static void LocationManagerMenu()
+        {
+            MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+
+            while (true)
+            {
+                Console.WriteLine("=== HANTERA PLATSER ===");
+                Console.WriteLine("1. Lägg till ny plats");
+                Console.WriteLine("2. Visa alla platser");
+                Console.WriteLine("3. Sök plats (efter namn)");
+                Console.WriteLine("4. Uppdatera platser");
+                Console.WriteLine("5. Ta bort plats");
+                Console.WriteLine("0. Tillbaka till huvudmeny");
+                Console.Write("Val: ");
+                if (int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("\n--- Lägg till ny plats ---");
+
+                            // 1. Fråga användaren efter namn
+                            Console.Write("Namn: ");
+                            string? name = Console.ReadLine();
+
+                            // 2. Fråga användaren efter region
+                            Console.Write("Region: ");
+                            string? region = Console.ReadLine();
+
+                            facade.AddLocation(name, region); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+
+                            // 3. Skriv ut ett bekräftelsemeddelande
+                            Console.WriteLine("✅ Plats tillagd!");
+
+                            break;
+
+                        case 2:
+                            OutputAllLocations();
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Funktion ej aktiverad.");
+                            Console.WriteLine("Betala för en VG-version för åtkomst.");
+                            break;
+
+                        case 4:
+                            Console.WriteLine("\n--- Uppdatera platser ---");
+
+                            // Först visar vi alla monster så användaren ser vilka som finns
+                            OutputAllLocations();
+
+                            // 1. Fråga vilket Id användaren vill uppdatera
+                            Console.Write("\nAnge Id på platsen du vill uppdatera: ");
+
+                            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
+                            {
+                                Console.WriteLine("Felaktigt Id!");
+                                return;
+                            }
+
+                            // 2. Fråga efter nytt namn
+                            Console.Write("Nytt namn: ");
+                            string? newName = Console.ReadLine();
+
+                            // 3. Fråga efter ny region
+                             Console.Write("Ny region: ");
+                            string? newRegion = Console.ReadLine();
+
+                            facade.UpdateLocation(idToUpdate, newName, newRegion);
+
+                            break;
+
+                        case 5:
+                            Console.WriteLine("\n--- Ta bort plats ---");
+
+                            // Visa alla platser först
+                            OutputAllLocations();
+
+                            // 1. Fråga vilket Id användaren vill ta bort
+                            Console.Write("\nAnge Id på platsen du vill ta bort: ");
+
+                            if (!int.TryParse(Console.ReadLine(), out int idToDelete))
+                            {
+                                Console.WriteLine("Felaktigt id!");
+                                return;
+                            }
+
+                            // 2. Fråga om användaren är säker (säkerhetscheck!)
+                            Console.Write($"Är du säker på att du vill ta bort platsen med Id {idToDelete}? (ja/nej): ");
+                            string answer = Console.ReadLine();
+
+                            if (answer.ToLower() != "ja")
+                            {
+                                Console.WriteLine("Avbrutet!");
+                                return;
+                            }
+
+                            facade.DeleteLocation(idToDelete);
+
+                            Console.WriteLine("✅ Platsen borttagen!");
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            Console.WriteLine("Felaktigt val");
+                            break;
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Felaktigt val");
+
+                }
+            }
+
+            static void OutputAllLocations()
+            {
+                Console.WriteLine("\n--- Alla platser ---");
+
+                // 1. Hämta alla jägare
+                MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+                List<Location> locations = facade.GetAllLocations();
+
+                // 2. Skriv ut varje plats på ett snyggt sätt
+                // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
+                foreach (Location location in locations)
+                {
+
+                    Console.WriteLine($"Id: {location.Id}, Namn: {location.Name}, Region: {location.Region}");
+
+                }
             }
         }
 
@@ -245,7 +388,7 @@ namespace assignment_sql_81clafra.UI
 
                             facade.AddHunter(name, experienceLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
-                            // 5. Skriv ut ett bekräftelsemeddelande
+                            // 3. Skriv ut ett bekräftelsemeddelande
                             Console.WriteLine("✅ Jägare tillagd!");
 
                             break;
@@ -340,7 +483,7 @@ namespace assignment_sql_81clafra.UI
                 MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
                 List<Hunter> hunters = facade.GetAllHunters();
 
-                // 6. Skriv ut varje monster på ett snyggt sätt
+                // 2. Skriv ut varje jägare på ett snyggt sätt
                 // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
                 foreach (Hunter hunter in hunters)
                 {
@@ -352,7 +495,7 @@ namespace assignment_sql_81clafra.UI
 
             static string? InputExperienceLevel()
             {
-                // 3. Fråga användaren efter erfarenhetsnivå
+                // 1. Fråga användaren efter erfarenhetsnivå
                 string[] validExperienceLevels = { "Rookie", "Expert", "Master" };
                 string? experienceLevel = "";
                 do
