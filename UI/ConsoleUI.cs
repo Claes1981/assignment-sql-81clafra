@@ -32,6 +32,10 @@ namespace assignment_sql_81clafra.UI
                             MonsterManagerMenu();
                             break;
 
+                        case 2:
+                            HunterManagerMenu();
+                            break;
+
                         case 0:
                             return;
                         
