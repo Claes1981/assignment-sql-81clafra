@@ -60,7 +60,7 @@ namespace assignment_sql_81clafra.Services
             _hunterRepo.CreateHunter(hunter);
         }
 
-        public List<Hunters> GetAllHunters()
+        public List<Hunter> GetAllHunters()
         {
             return _hunterRepo.ReadAllHunters();
         }
