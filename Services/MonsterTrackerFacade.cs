@@ -50,9 +50,33 @@ namespace assignment_sql_81clafra.Services
 
         public void DeleteMonster(int idToDelete)
         {
-            var monsterToDelete = new Monster { Id = idToDelete};
+            var monsterToDelete = new Monster { Id = idToDelete };
             _monsterRepo.DeleteMonster(monsterToDelete);
         }
+        
+        public void AddHunter(string name, string experienceLevel)
+        {
+            var hunter = new Hunter { Name = name, ExperienceLevel = experienceLevel };
+            _hunterRepo.CreateHunter(hunter);
+        }
+
+        public List<Hunters> GetAllHunters()
+        {
+            return _hunterRepo.ReadAllHunters();
+        }
+
+        public void UpdateHunter(int idToUpdate, string? newName, string? newExperienceLevel)
+        {
+            var hunterToUpdate = new Hunter { Id = idToUpdate, Name = newName, ExperienceLevel = newExperienceLevel };
+            _hunterRepo.UpdateHunter(hunterToUpdate);
+        }
+
+        public void DeleteHunter(int idToDelete)
+        {
+            var hunterToDelete = new Hunter { Id = idToDelete};
+            _hunterRepo.DeleteHunter(hunterToDelete);
+        }
+
 
         // Mer komplexa operationer som kombinerar flera repositories
         // public List<Observation> GetObservationsByMonsterType(string type)
