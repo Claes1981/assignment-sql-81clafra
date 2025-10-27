@@ -38,7 +38,7 @@ namespace assignment_sql_81clafra.UI
 
                         case 0:
                             return;
-                        
+
                         default:
                             break;
 
@@ -87,7 +87,7 @@ namespace assignment_sql_81clafra.UI
 
                             facade.AddMonster(name, type, dangerLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
-                            // 5. Skriv ut ett be1kräftelsemeddelande
+                            // 5. Skriv ut ett bekräftelsemeddelande
                             Console.WriteLine("✅ Monster tillagt!");
 
                             break;
@@ -125,7 +125,7 @@ namespace assignment_sql_81clafra.UI
                             Console.Write("Ny typ: ");
                             string? newType = Console.ReadLine();
 
-                            // 3. Fråga efter ny dangerlevel
+                            // 4. Fråga efter ny dangerlevel
                             string? newDangerLevel = InputDangerLevel();
 
                             facade.UpdateMonster(idToUpdate, newName, newType, newDangerLevel);
@@ -213,6 +213,161 @@ namespace assignment_sql_81clafra.UI
                 while (!validDangerLevels.Contains(dangerLevel));
                 return dangerLevel;
             }
+        }
+
+        public static void HunterManagerMenu()
+        {
+            MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+
+            while (true)
+            {
+                Console.WriteLine("=== HANTERA JÄGARE ===");
+                Console.WriteLine("1. Lägg till ny jägare");
+                Console.WriteLine("2. Visa alla jägare");
+                Console.WriteLine("3. Sök jägare (efter namn)");
+                Console.WriteLine("4. Uppdatera jägare");
+                Console.WriteLine("5. Ta bort jägare");
+                Console.WriteLine("0. Tillbaka till huvudmeny");
+                Console.Write("Val: ");
+                if (int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("\n--- Lägg till ny jägare ---");
+
+                            // 1. Fråga användaren efter namn
+                            Console.Write("Namn: ");
+                            string? name = Console.ReadLine();
+
+                            // 2. Fråga användaren efter erfarenhetsnivå
+                            string? experienceLevel = InputExperienceLevel();
+
+                            facade.AddHunter(name, experienceLevel); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+
+                            // 5. Skriv ut ett bekräftelsemeddelande
+                            Console.WriteLine("✅ Jägare tillagd!");
+
+                            break;
+
+                        case 2:
+                            OutputAllHunters();
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Funktion ej aktiverad.");
+                            Console.WriteLine("Betala för en VG-version för åtkomst.");
+                            break;
+
+                        case 4:
+                            Console.WriteLine("\n--- Uppdatera jägare ---");
+
+                            // Först visar vi alla monster så användaren ser vilka som finns
+                            OutputAllHunters();
+
+                            // 1. Fråga vilket Id användaren vill uppdatera
+                            Console.Write("\nAnge Id på jägaren du vill uppdatera: ");
+
+                            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
+                            {
+                                Console.WriteLine("Felaktigt Id!");
+                                return;
+                            }
+
+                            // 2. Fråga efter nytt namn
+                            Console.Write("Nytt namn: ");
+                            string? newName = Console.ReadLine();
+
+                            // 3. Fråga efter ny erfarenhetsnivå
+                            string? newExperienceLevel = InputExperienceLevel();
+
+                            facade.UpdateHunter(idToUpdate, newName, newExperienceLevel);
+
+                            break;
+
+                        case 5:
+                            Console.WriteLine("\n--- Ta bort jägare ---");
+
+                            // Visa alla jägare först
+                            OutputAllHunters();
+
+                            // 1. Fråga vilket Id användaren vill ta bort
+                            Console.Write("\nAnge Id på jägaren du vill ta bort: ");
+
+                            if (!int.TryParse(Console.ReadLine(), out int idToDelete))
+                            {
+                                Console.WriteLine("Felaktigt id!");
+                                return;
+                            }
+
+                            // 2. Fråga om användaren är säker (säkerhetscheck!)
+                            Console.Write($"Är du säker på att du vill ta bort jägaren med Id {idToDelete}? (ja/nej): ");
+                            string answer = Console.ReadLine();
+
+                            if (answer.ToLower() != "ja")
+                            {
+                                Console.WriteLine("Avbrutet!");
+                                return;
+                            }
+
+                            facade.DeleteHunter(idToDelete);
+
+                            Console.WriteLine("✅ Jägaren borttagen!");
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            Console.WriteLine("Felaktigt val");
+                            break;
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Felaktigt val");
+
+                }
+            }
+
+            static void OutputAllHunters()
+            {
+                Console.WriteLine("\n--- Alla jägare ---");
+
+                // 1. Hämta alla jägare
+                MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
+                List<Hunter> hunters = facade.GetAllHunters();
+
+                // 6. Skriv ut varje monster på ett snyggt sätt
+                // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
+                foreach (Hunter hunter in hunters)
+                {
+
+                    Console.WriteLine($"Id: {hunter.Id}, Namn: {hunter.Name}, Experiencelevel: {hunter.ExperienceLevel}");
+
+                }
+            }
+
+            static string? InputExperienceLevel()
+            {
+                // 3. Fråga användaren efter erfarenhetsnivå
+                string[] validExperienceLevels = { "Rookie", "Expert", "Master" };
+                string? experienceLevel = "";
+                do
+                {
+                    Console.Write("Experiencelevel: Rookie, Expert, eller Master: ");
+                    experienceLevel = Console.ReadLine();
+                    if (!validExperienceLevels.Contains(experienceLevel))
+                    {
+                        Console.WriteLine("Felaktigt experiencelevel");
+                    }
+                }
+                while (!validExperienceLevels.Contains(experienceLevel));
+                return experienceLevel;
+            }
+
         }
     }
 }
