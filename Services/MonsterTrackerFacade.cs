@@ -53,7 +53,7 @@ namespace assignment_sql_81clafra.Services
             var monsterToDelete = new Monster { Id = idToDelete };
             _monsterRepo.DeleteMonster(monsterToDelete);
         }
-        
+
         public void AddHunter(string name, string experienceLevel)
         {
             var hunter = new Hunter { Name = name, ExperienceLevel = experienceLevel };
@@ -73,8 +73,31 @@ namespace assignment_sql_81clafra.Services
 
         public void DeleteHunter(int idToDelete)
         {
-            var hunterToDelete = new Hunter { Id = idToDelete};
+            var hunterToDelete = new Hunter { Id = idToDelete };
             _hunterRepo.DeleteHunter(hunterToDelete);
+        }
+
+        public void AddLocation(string name, string region)
+        {
+            var location = new Location { Name = name, Region = region };
+            _locationRepo.CreateLocation(location);
+        }
+
+        public List<Location> GetAllLocations()
+        {
+            return _locationRepo.ReadAllLocations();
+        }
+
+        public void UpdateLocation(int idToUpdate, string? newName, string? newRegion)
+        {
+            var locationToUpdate = new Location { Id = idToUpdate, Name = newName, Region = newRegion };
+            _locationRepo.UpdateLocation(locationToUpdate);
+        }
+
+        public void DeleteLocation(int idToDelete)
+        {
+            var locationToDelete = new Location { Id = idToDelete};
+            _locationRepo.DeleteLocation(locationToDelete);
         }
 
 
