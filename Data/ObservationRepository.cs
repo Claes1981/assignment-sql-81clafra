@@ -11,9 +11,9 @@ namespace assignment_sql_81clafra.Data
         // Corrected with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-OnsK_24mQm.TzjLBsttzgQ#0
         public void CreateObservation(Models.Observation observation)
         {
-            // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
+            // 1. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
-            // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             string sqlCommandText = "INSERT INTO Observation (MonsterId, LocationId, HunterId, Description, DateSeen) VALUES (@monsterid, @locationid, @hunterid, @description, @dateseen)";

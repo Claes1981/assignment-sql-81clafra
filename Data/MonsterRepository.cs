@@ -17,9 +17,9 @@ namespace assignment_sql_81clafra.Data
         // Corrected with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-OnsK_24mQm.TzjLBsttzgQ#0
         public void CreateMonster(Models.Monster monster)
         {
-            // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
+            // 1. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
-            // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             string sqlCommandText = "INSERT INTO Monster (Name, Type, DangerLevel) VALUES (@name, @type, @dangerlevel)";
@@ -82,11 +82,11 @@ namespace assignment_sql_81clafra.Data
 
         public void UpdateMonster(Monster monsterToUpdate)
         {
-            // 4. Skapa SQL-frågan med parametrar
+            // 1. Skapa SQL-frågan med parametrar
             // Tipset: UPDATE Personer SET Namn = @namn, Ålder = @ålder WHERE Id = @id
             string sqlCommandText = "UPDATE Monster SET Name = @name, Type = @type, DangerLevel = @dangerlevel WHERE Id = @id";
 
-            // 5. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             using (SQLiteCommand command = connection.CreateCommand()) // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
@@ -99,7 +99,7 @@ namespace assignment_sql_81clafra.Data
                 command.Parameters.AddWithValue("@dangerlevel", monsterToUpdate.DangerLevel);
                 command.Parameters.AddWithValue("@id", monsterToUpdate.Id);
 
-                // 6. ExecuteNonQuery() returnerar antalet påverkade rader
+                // 3. ExecuteNonQuery() returnerar antalet påverkade rader
                 // Om det är 0 betyder det att inget hittades med det Id:t
 
                 int affectedRows = command.ExecuteNonQuery();
@@ -109,11 +109,11 @@ namespace assignment_sql_81clafra.Data
 
         public void DeleteMonster(Monster monster)
         {
-            // 3. Skapa SQL-frågan med parameter
+            // 1. Skapa SQL-frågan med parameter
             // Tipset: DELETE FROM Personer WHERE Id = @id
             string sqlCommandText = "DELETE FROM Monster WHERE Id = @id"; // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
-            // 4. Öppna connection, skapa command, lägg till parameter, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parameter, kör ExecuteNonQuery()
 
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
             {

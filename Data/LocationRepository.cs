@@ -11,9 +11,9 @@ namespace assignment_sql_81clafra.Data
         // Corrected with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-OnsK_24mQm.TzjLBsttzgQ#0
         public void CreateLocation(Models.Location location)
         {
-            // 3. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
+            // 1. Skapa SQL-frågan med PARAMETRAR (inte string concatenation!)
             // Tipset: INSERT INTO Personer (Namn, Ålder) VALUES (@namn, @ålder)
-            // 4. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help from Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             string sqlCommandText = "INSERT INTO Location (Name, Region) VALUES (@name, @region)";
@@ -74,11 +74,11 @@ namespace assignment_sql_81clafra.Data
 
         public void UpdateLocation(Location locationToUpdate)
         {
-            // 4. Skapa SQL-frågan med parametrar
+            // 1. Skapa SQL-frågan med parametrar
             // Tipset: UPDATE Personer SET Namn = @namn, Ålder = @ålder WHERE Id = @id
             string sqlCommandText = "UPDATE Location SET Name = @name, Region = @region WHERE Id = @id";
 
-            // 5. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parametrar, kör ExecuteNonQuery()
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
 
             using (SQLiteCommand command = connection.CreateCommand()) // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
@@ -90,7 +90,7 @@ namespace assignment_sql_81clafra.Data
                 command.Parameters.AddWithValue("@region", locationToUpdate.Region);
                 command.Parameters.AddWithValue("@id", locationToUpdate.Id);
 
-                // 6. ExecuteNonQuery() returnerar antalet påverkade rader
+                // 3. ExecuteNonQuery() returnerar antalet påverkade rader
                 // Om det är 0 betyder det att inget hittades med det Id:t
 
                 int affectedRows = command.ExecuteNonQuery();
@@ -100,11 +100,11 @@ namespace assignment_sql_81clafra.Data
 
         public void DeleteLocation(Location location)
         {
-            // 3. Skapa SQL-frågan med parameter
+            // 1. Skapa SQL-frågan med parameter
             // Tipset: DELETE FROM Personer WHERE Id = @id
             string sqlCommandText = "DELETE FROM Location WHERE Id = @id"; // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
-            // 4. Öppna connection, skapa command, lägg till parameter, kör ExecuteNonQuery()
+            // 2. Öppna connection, skapa command, lägg till parameter, kör ExecuteNonQuery()
 
             using SQLiteConnection connection = DatabaseConnection.GetConnection(); // Generated with help fron Perplexity, https://www.perplexity.ai/search/why-do-i-get-this-error-messag-Qt5RQfY7Swmk189g7bwlhw#0 
             {
