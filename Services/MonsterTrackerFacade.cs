@@ -54,6 +54,29 @@ namespace assignment_sql_81clafra.Services
             _monsterRepo.DeleteMonster(monsterToDelete);
         }
 
+        public void AddLocation(string name, string region)
+        {
+            var location = new Location { Name = name, Region = region };
+            _locationRepo.CreateLocation(location);
+        }
+
+        public List<Location> GetAllLocations()
+        {
+            return _locationRepo.ReadAllLocations();
+        }
+
+        public void UpdateLocation(int idToUpdate, string? newName, string? newRegion)
+        {
+            var locationToUpdate = new Location { Id = idToUpdate, Name = newName, Region = newRegion };
+            _locationRepo.UpdateLocation(locationToUpdate);
+        }
+
+        public void DeleteLocation(int idToDelete)
+        {
+            var locationToDelete = new Location { Id = idToDelete };
+            _locationRepo.DeleteLocation(locationToDelete);
+        }
+
         public void AddHunter(string name, string experienceLevel)
         {
             var hunter = new Hunter { Name = name, ExperienceLevel = experienceLevel };
@@ -77,27 +100,27 @@ namespace assignment_sql_81clafra.Services
             _hunterRepo.DeleteHunter(hunterToDelete);
         }
 
-        public void AddLocation(string name, string region)
+        public void AddObservation(int monsterId, int locationId, int hunterId, string description, string dateSeen)
         {
-            var location = new Location { Name = name, Region = region };
-            _locationRepo.CreateLocation(location);
+            var observation = new Observation { MonsterId = monsterId, LocationId = locationId, HunterId = hunterId, Description=description, DateSeen=dateSeen };
+            _observationRepo.CreateObservation(observation);
         }
 
-        public List<Location> GetAllLocations()
+        public List<Observation> GetAllObservations()
         {
-            return _locationRepo.ReadAllLocations();
+            return _observationRepo.ReadAllObservations();
         }
 
-        public void UpdateLocation(int idToUpdate, string? newName, string? newRegion)
+        public void UpdateObservation(int idToUpdate, int newMonsterId, int newLocationId, int newHunterId, string? newDescription, string? newDateSeen)
         {
-            var locationToUpdate = new Location { Id = idToUpdate, Name = newName, Region = newRegion };
-            _locationRepo.UpdateLocation(locationToUpdate);
+            var observationToUpdate = new Observation { Id = idToUpdate, MonsterId=newMonsterId, LocationId=newLocationId, HunterId=newHunterId, Description = newDescription, DateSeen = newDateSeen };
+            _observationRepo.UpdateObservation(observationToUpdate);
         }
 
-        public void DeleteLocation(int idToDelete)
+        public void DeleteObservation(int idToDelete)
         {
-            var locationToDelete = new Location { Id = idToDelete};
-            _locationRepo.DeleteLocation(locationToDelete);
+            var observationToDelete = new Observation { Id = idToDelete };
+            _observationRepo.DeleteObservation(observationToDelete);
         }
 
 
