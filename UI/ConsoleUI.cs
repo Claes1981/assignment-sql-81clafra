@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using assignment_sql_81clafra.Data;
 using assignment_sql_81clafra.Models;
 using assignment_sql_81clafra.Services;
+using System.Data.SQLite;
 
 namespace assignment_sql_81clafra.UI
 {
@@ -35,7 +36,7 @@ namespace assignment_sql_81clafra.UI
                         case 2:
                             LocationManagerMenu();
                             break;
-                        
+
                         case 3:
                             HunterManagerMenu();
                             break;
@@ -43,7 +44,7 @@ namespace assignment_sql_81clafra.UI
                         case 4:
                             ObservationManagerMenu();
                             break;
-                        
+
                         case 0:
                             return;
 
@@ -164,9 +165,27 @@ namespace assignment_sql_81clafra.UI
                                 return;
                             }
 
-                            facade.DeleteMonster(idToDelete);
+                            try
+                            {
+                                facade.DeleteMonster(idToDelete);
 
-                            Console.WriteLine("✅ Monstret är borttaget!");
+                                Console.WriteLine("✅ Monstret är borttaget!");
+                            }
+
+                            // Written with help from Perplexity, https://www.perplexity.ai/search/when-i-run-this-code-and-try-t-M23pxGhiQb2Mqfr3ThnIWA#0
+                            catch (SQLiteException ex)
+                            {
+                                if (ex.Message.Contains("FOREIGN KEY constraint failed"))
+                                    Console.WriteLine("Kan inte radera eftersom monstret har registrerade observationer!");
+                                else
+                                    Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+                               
+                            }
+
                             break;
 
                         case 0:
@@ -220,8 +239,8 @@ namespace assignment_sql_81clafra.UI
                 while (!validDangerLevels.Contains(dangerLevel));
                 return dangerLevel;
             }
-        
-    }
+
+        }
 
         public static void LocationManagerMenu()
         {
@@ -289,7 +308,7 @@ namespace assignment_sql_81clafra.UI
                             string? newName = Console.ReadLine();
 
                             // 3. Fråga efter ny region
-                             Console.Write("ny region: ");
+                            Console.Write("ny region: ");
                             string? newRegion = Console.ReadLine();
 
                             facade.UpdateLocation(idToUpdate, newName, newRegion);
@@ -564,7 +583,7 @@ namespace assignment_sql_81clafra.UI
                             Console.Write("datum (ÅÅÅÅ-MM-DD): ");
                             string? dateSeen = Console.ReadLine();
 
-                            facade.AddObservation(monsterId, locationId, hunterId, description,dateSeen); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            facade.AddObservation(monsterId, locationId, hunterId, description, dateSeen); // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
 
                             // 4. Skriv ut ett bekräftelsemeddelande
                             Console.WriteLine("✅ Observationen har lagts till!");
@@ -596,7 +615,7 @@ namespace assignment_sql_81clafra.UI
                                 return;
                             }
 
-                             Console.Write("\nnytt monster-id: ");
+                            Console.Write("\nnytt monster-id: ");
 
                             // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
                             if (!int.TryParse(Console.ReadLine(), out int newMonsterId))
