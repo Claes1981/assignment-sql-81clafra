@@ -17,7 +17,7 @@ namespace assignment_sql_81clafra.UI
         {
             while (true)
             {
-                Console.WriteLine("=== Huvudmeny ===");
+                Console.WriteLine("\n=== HUVUDMENY ===");
                 Console.WriteLine("1. Hantera monster.");
                 Console.WriteLine("2. Hantera platser.");
                 Console.WriteLine("3. Hantera jägare.");
@@ -67,7 +67,7 @@ namespace assignment_sql_81clafra.UI
 
             while (true)
             {
-                Console.WriteLine("=== HANTERA MONSTER ===");
+                Console.WriteLine("\n=== HANTERA MONSTER ===");
                 Console.WriteLine("1. Lägg till nytt monster.");
                 Console.WriteLine("2. Visa alla monster.");
                 Console.WriteLine("3. Sök monster (efter namn).");
@@ -247,7 +247,7 @@ namespace assignment_sql_81clafra.UI
 
             while (true)
             {
-                Console.WriteLine("=== HANTERA PLATSER ===");
+                Console.WriteLine("\n=== HANTERA PLATSER ===");
                 Console.WriteLine("1. Lägg till ny plats.");
                 Console.WriteLine("2. Visa alla platser.");
                 Console.WriteLine("3. Sök plats (efter namn).");
@@ -402,7 +402,7 @@ namespace assignment_sql_81clafra.UI
 
             while (true)
             {
-                Console.WriteLine("=== HANTERA JÄGARE ===");
+                Console.WriteLine("\n=== HANTERA JÄGARE ===");
                 Console.WriteLine("1. Lägg till ny jägare.");
                 Console.WriteLine("2. Visa alla jägare.");
                 Console.WriteLine("3. Sök jägare (efter namn).");
@@ -574,7 +574,7 @@ namespace assignment_sql_81clafra.UI
 
             while (true)
             {
-                Console.WriteLine("=== HANTERA OBSERVATIONER ===");
+                Console.WriteLine("\n=== HANTERA OBSERVATIONER ===");
                 Console.WriteLine("1. Lägg till ny observation.");
                 Console.WriteLine("2. Visa alla observationer.");
                 Console.WriteLine("3. Sök observation (efter datum).");
