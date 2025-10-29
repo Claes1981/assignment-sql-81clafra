@@ -183,7 +183,6 @@ namespace assignment_sql_81clafra.UI
                             catch (Exception ex)
                             {
                                 Console.WriteLine($"Ett fel uppstod: {ex.Message}");
-                               
                             }
 
                             break;
@@ -340,9 +339,26 @@ namespace assignment_sql_81clafra.UI
                                 return;
                             }
 
-                            facade.DeleteLocation(idToDelete);
+                            try
+                            {
 
-                            Console.WriteLine("✅ Platsen är borttagen!");
+
+                                facade.DeleteLocation(idToDelete);
+
+                                Console.WriteLine("✅ Platsen är borttagen!");
+                            }
+                            // Written with help from Perplexity, https://www.perplexity.ai/search/when-i-run-this-code-and-try-t-M23pxGhiQb2Mqfr3ThnIWA#0
+                            catch (SQLiteException ex)
+                            {
+                                if (ex.Message.Contains("FOREIGN KEY constraint failed"))
+                                    Console.WriteLine("Kan inte radera eftersom platsen har registrerade observationer!");
+                                else
+                                    Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+                            }
                             break;
 
                         case 0:
@@ -476,9 +492,26 @@ namespace assignment_sql_81clafra.UI
                                 return;
                             }
 
-                            facade.DeleteHunter(idToDelete);
+                            try
+                            {
 
-                            Console.WriteLine("✅ Jägaren är borttagen!");
+                                facade.DeleteHunter(idToDelete);
+
+                                Console.WriteLine("✅ Jägaren är borttagen!");
+                            }
+
+                            // Written with help from Perplexity, https://www.perplexity.ai/search/when-i-run-this-code-and-try-t-M23pxGhiQb2Mqfr3ThnIWA#0
+                            catch (SQLiteException ex)
+                            {
+                                if (ex.Message.Contains("FOREIGN KEY constraint failed"))
+                                    Console.WriteLine("Kan inte radera eftersom jägaren har registrerade observationer!");
+                                else
+                                    Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+                            }
                             break;
 
                         case 0:
