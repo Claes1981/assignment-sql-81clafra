@@ -40,6 +40,10 @@ namespace assignment_sql_81clafra.UI
                             HunterManagerMenu();
                             break;
 
+                        case 4:
+                            ObservationManagerMenu();
+                            break;
+                        
                         case 0:
                             return;
 
@@ -568,7 +572,7 @@ namespace assignment_sql_81clafra.UI
                             break;
 
                         case 2:
-                            OutputAllMonsters();
+                            OutputAllObservations();
                             break;
 
                         case 3:
@@ -577,44 +581,68 @@ namespace assignment_sql_81clafra.UI
                             break;
 
                         case 4:
-                            Console.WriteLine("\n--- Uppdatera monster ---");
+                            Console.WriteLine("\n--- Uppdatera observation ---");
 
                             // Först visar vi alla monster så användaren ser vilka som finns
-                            OutputAllMonsters();
+                            OutputAllObservations();
 
                             // 1. Fråga vilket Id användaren vill uppdatera
-                            Console.Write("\nAnge Id på monstret du vill uppdatera: ");
+                            Console.Write("\nAnge Id på observationen du vill uppdatera: ");
 
                             // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
                             if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
                             {
-                                Console.WriteLine("Felaktigt Id!");
+                                Console.WriteLine("Felaktigt id!");
                                 return;
                             }
 
-                            // 2. Fråga efter nytt namn
-                            Console.Write("Nytt namn: ");
-                            string? newName = Console.ReadLine();
+                             Console.Write("\nNytt monster-id: ");
 
-                            // 3. Fråga efter ny typ
-                            Console.Write("Ny typ: ");
-                            string? newType = Console.ReadLine();
+                            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            if (!int.TryParse(Console.ReadLine(), out int newMonsterId))
+                            {
+                                Console.WriteLine("Felaktigt monster-id!");
+                                return;
+                            }
 
-                            // 4. Fråga efter ny dangerlevel
-                            string? newDangerLevel = InputDangerLevel();
+                            Console.Write("\nNytt plats-id: ");
 
-                            facade.UpdateMonster(idToUpdate, newName, newType, newDangerLevel);
+                            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            if (!int.TryParse(Console.ReadLine(), out int newLocationId))
+                            {
+                                Console.WriteLine("Felaktigt plats-id!");
+                                return;
+                            }
+
+                            Console.Write("\nNytt jägar-id: ");
+
+                            // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct
+                            if (!int.TryParse(Console.ReadLine(), out int newHunterId))
+                            {
+                                Console.WriteLine("Felaktigt jägar-id!");
+                                return;
+                            }
+
+                            // 2. Fråga efter ny beskrivning
+                            Console.Write("Ny händelsebeskrivning: ");
+                            string? newDescription = Console.ReadLine();
+
+                            // 3. Fråga efter nytt datum
+                            Console.Write("Nytt datum: ");
+                            string? newDateSeen = Console.ReadLine();
+
+                            facade.UpdateObservation(idToUpdate, newMonsterId, newLocationId, newHunterId, newDescription, newDateSeen);
 
                             break;
 
                         case 5:
-                            Console.WriteLine("\n--- Ta bort monster ---");
+                            Console.WriteLine("\n--- Ta bort observation ---");
 
-                            // Visa alla monster först
-                            OutputAllMonsters();
+                            // Visa alla observationer först
+                            OutputAllObservations();
 
                             // 1. Fråga vilket Id användaren vill ta bort
-                            Console.Write("\nAnge Id på monstret du vill ta bort: ");
+                            Console.Write("\nAnge Id på observationen du vill ta bort: ");
 
                             if (!int.TryParse(Console.ReadLine(), out int idToDelete))
                             {
@@ -623,7 +651,7 @@ namespace assignment_sql_81clafra.UI
                             }
 
                             // 2. Fråga om användaren är säker (säkerhetscheck!)
-                            Console.Write($"Är du säker på att du vill ta bort monstret med Id {idToDelete}? (ja/nej): ");
+                            Console.Write($"Är du säker på att du vill ta bort observationen med Id {idToDelete}? (ja/nej): ");
                             string answer = Console.ReadLine();
 
                             if (answer.ToLower() != "ja")
@@ -632,9 +660,9 @@ namespace assignment_sql_81clafra.UI
                                 return;
                             }
 
-                            facade.DeleteMonster(idToDelete);
+                            facade.DeleteObservation(idToDelete);
 
-                            Console.WriteLine("✅ Monster borttaget!");
+                            Console.WriteLine("✅ Observation borttagen!");
                             break;
 
                         case 0:
@@ -653,20 +681,20 @@ namespace assignment_sql_81clafra.UI
                 }
             }
 
-            static void OutputAllMonsters()
+            static void OutputAllObservations()
             {
-                Console.WriteLine("\n--- Alla monster ---");
+                Console.WriteLine("\n--- Alla observationer ---");
 
-                // 1. Hämta alla monster
+                // 1. Hämta alla observationer
                 MonsterTrackerFacade facade = new MonsterTrackerFacade(); // With help from Perplexity, https://www.perplexity.ai/search/can-you-help-me-with-this-erro-1Vj.QVQzSbOfN8bbixFCdg#0
-                List<Monster> monsters = facade.GetAllMonsters();
+                List<Observation> observations = facade.GetAllObservations();
 
-                // 2. Skriv ut varje monster på ett snyggt sätt
+                // 2. Skriv ut varje observation på ett snyggt sätt
                 // Generated with help from TabbyML/Qwen2.5-Coder-7B-Instruct 
-                foreach (Monster monster in monsters)
+                foreach (Observation observation in observations)
                 {
 
-                    Console.WriteLine($"Id: {monster.Id}, Name: {monster.Name}, Type: {monster.Type}, Dangerlevel: {monster.DangerLevel}");
+                    Console.WriteLine($"id: {observation.Id}, monster-id: {observation.MonsterId}, plats-id: {observation.LocationId}, jägar-id: {observation.HunterId}, händelsebeskrivning: {observation.Description}, datum: {observation.DateSeen}");
 
                 }
             }
