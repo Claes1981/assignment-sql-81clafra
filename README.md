@@ -240,13 +240,13 @@ Den största utmaningen var att hantera främmande nycklar korrekt och förstå 
 
 ### Hjälp och samarbete
 
-- **Lärare:** Fick hjälp med att förstå 3NF och transaktioner
-- **Kurskamrater:** Diskuterade Repository-mönster med [Namn]
 - **AI-verktyg:** Använde Perplexity.ai för att:
+  - Ta reda på hur en SQL-schema-fil kan användas för att med C# skapa en tom SQLite databas, samt aktivera främmande nycklar i databasen. 
+  - Bli påmind om att metoder är private som standard i C# och därmed behöver texten "public" framför dem för att andra klasser ska komma åt dem. Vidare också att ickestatiska metoder behöver en instans av klassen först för att kunna användas.
+  - Få en mall över hur på ett snyggt sätt implementera en textbaserad meny-funktion.
 
-  - Förstå hur SqliteException.SqliteErrorCode fungerar
-  - Få förslag på SQL-queries för rapporter
-  - Felsöka problem med främmande nycklar
+  Använde TabbyML Visual studio code-plugin tillsammans med modellen Qwen2.5-Coder-7B lokalt på datorn för att:
+  - Få hjälp med många kodifyllningar, se kommentarer i koden. Modellen hade även tillgång till kursens Github-repositories som data.
 
 ### Dokumentation och resurser
 
