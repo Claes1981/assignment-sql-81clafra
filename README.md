@@ -219,10 +219,9 @@ MonsterTracker/
 - Inga kända buggar för närvarande
 
 **Potentiella förbättringar:**
-- Validering av GPS-koordinater kunde vara mer robust
 - Datumsformat kunde valideras strängare (just nu accepteras alla TEXT-värden)
 - Menynavigering kunde förbättras med breadcrumbs
-- [Lägg till dina egna reflektioner här]
+v
 
 ---
 
@@ -249,11 +248,10 @@ Den största utmaningen var att hantera främmande nycklar korrekt och förstå 
   - Få hjälp med många kodifyllningar, se kommentarer i koden. Modellen hade även tillgång till kursens Github-repositories som data.
 
 ### Dokumentation och resurser
-
-- [Microsoft.Data.Sqlite dokumentation](https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/)
-- [SQLite foreign key constraints](https://www.sqlite.org/foreignkeys.html)
-- [Repository Pattern explained](https://medium.com/@pererikbergman/repository-design-pattern-e28c0f3e4a30)
-- [Facade Pattern (Refactoring Guru)](https://refactoring.guru/design-patterns/facade)
+- [Work with entity relationship table shapes in draw.io](https://www.drawio.com/blog/entity-relationship-tables)
+- [What is Third Normal Form (3NF)?](https://www.datacamp.com/tutorial/third-normal-form)
+- [SQLite C#: Connecting to SQLite databases](https://www.sqlitetutorial.net/sqlite-csharp/connect/)
+- [Repository as static or non-static class?](https://stackoverflow.com/a/29794891)
 
 ### Kod från externa källor
 
