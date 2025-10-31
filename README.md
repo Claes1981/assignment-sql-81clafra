@@ -219,6 +219,7 @@ MonsterTracker/
 - Inga kända buggar för närvarande
 
 **Potentiella förbättringar:**
+- Alla registreringar av nya, och uppdateringar av befintliga observationer, kräver kännedom om identifikationsnummer för aktuella monster, platser och jägare.
 - Datumsformat kunde valideras strängare (just nu accepteras alla TEXT-värden)
 - Menynavigering kunde förbättras med breadcrumbs
 v

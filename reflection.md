@@ -12,18 +12,16 @@
 **Hur planerade du databasstrukturen och koden?**
 
 **Ditt svar:**
-
-- ritade ER-diagram i Drawio desktop
-- skapade SQL-schema-filen utifrån mall
-- implementerade CRUD-metoder i en repository-klass för monster
-- skrev metoder för användargränsnitt rörande monster
-- konstruerade därtill facade- och modell-klasser för monster
-- skapade klass för att skapa databasen
-- implementerade alla metoder kopplade till jägare
-- skrev alla metoder kopplade till platser
-- konstruerade metoder för hanteringen av observationer
-- la till felhanteringsrutiner
-- skrev dokumentation
+1. ritade ER-diagram i Drawio desktop
+2. skapade SQL-schema-filen utifrån mall
+3. implementerade CRUD-metoder i en repository-klass för monster
+4. skrev metoder för användargränsnitt rörande monster
+5. konstruerade därtill facade- och modell-klasser för monster
+6. skapade klass för att skapa databasen
+7. implementerade alla metoder kopplade till jägare
+8. skrev alla metoder kopplade till platser
+9. konstruerade metoder för hanteringen av observationer
+10. la till felhanteringsrutiner
 
 ---
 
@@ -33,7 +31,6 @@
 
 
 **Ditt svar:**
-
 Svårt att peka ut något enskilt problem, det var många moment som behövde kluras ut hur de skulle implementeras. Svårt att någon gång hitta något flow i programmerandet.
 Löste det genom att ta en liten bit i taget och försöka ha tålamod.
 
@@ -43,17 +40,8 @@ Löste det genom att ta en liten bit i taget och försöka ha tålamod.
 
 **Vad är du mest nöjd med i ditt projekt?**
 
-*Detta kan vara teknisk implementation, kodkvalitet, design, eller något annat.*
-
-**Exempel:**
-- *En elegant Facade-implementation som gör Program.cs super enkel*
-- *Färgkodade utskrifter som förbättrar användarupplevelsen*
-- *En robust felhanteringsmetod som validerar all användarinput*
-- *Ett rent databasschema i perfekt 3NF*
-
 **Ditt svar:**
-
-Kanske att C#-koden automatiskt skapar en tom databas utifrån schema-filen.
+Kanske att C#-koden automatiskt skapar en tom databas endast utifrån schema-filen.
 
 ---
 
@@ -72,11 +60,7 @@ Se [readme](README.md)
 
 **Vem hjälpte dig och med vad?**
 
-[Lista konkret stöd du fick]
-
-**Exempel:**
-- "Diskuterade Repository-pattern med Lisa och förstod då varför varje tabell behöver sin egen repository"
-- "Läraren förklarade skillnaden mellan 2NF och 3NF med ett tydligt exempel"
+Lärare Marcus Medina förklarade varför det såg bättre ut att kalla samtliga primärnycklar för "Id" istället för att ge dem unika namn.
 
 ### Externa resurser
 
@@ -84,25 +68,20 @@ Se [readme](README.md)
 
 Se [readme](README.md)
 
--
--
--
-
 ---
 
 ## Del 5: Personlig utveckling
 
 ### Vad har du lärt dig om databaser?
 
-[Reflektion om databaskoncept: normalisering, relationer, SQL, etc.]
+Mycket var nytt för mig, såsom normalisering och nycklar. Också att lågnivåspråket för SQL var såpass krångligt och olikt de andra programmeringsspråk jag använt. 
 
 ### Vad har du lärt dig om koddesign?
 
-[Reflektion om SRP, Facade, separation of concerns, etc.]
+Att icke statiska metoder kräver att en instans först skapas av dem, och att det nog är rekommenderat att ha ickestatiska metoder för databashantering.
+Namnet facade var nytt för mig. Även behovet av modell-klasser i C# för databas-objekten, även om jag nog inte riktigt greppat de beskrivande klassernas syntax än.
 
 ### Vad har du lärt dig om problemlösning?
-
-[Reflektion om hur du angriper problem, debuggar, och hittar lösningar]
 
 ---
 
@@ -113,4 +92,4 @@ Se [readme](README.md)
 ---
 
 _Datum för reflektion: [Datum]_
-_Skapad av: [Ditt namn]_
+_Skapad av: Claes Fransson_
