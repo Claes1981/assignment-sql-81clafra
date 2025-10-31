@@ -13,8 +13,6 @@ Monster Tracker är ett konsolbaserat system för att logga och analysera monste
 Systemet gör det möjligt för jägare att:
 - Registrera nya monster och platser
 - Logga observationer med detaljerade beskrivningar
-- Söka och filtrera data
-- Generera rapporter och statistik över monsteraktivitet
 
 ---
 
