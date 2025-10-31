@@ -216,10 +216,9 @@ MonsterTracker/
 
 > **Viktigt:** Var ärlig om eventuella brister. Det visar mognad och ger läraren kontext.
 
-- Inga kända buggar för närvarande
+- Alla registreringar av nya, och uppdateringar av befintliga observationer, kräver kännedom om identifikationsnummer för aktuella monster, platser och jägare. Vidare, om användaren ger ett id-nummer för uppdatering som inte finns i databasen, reagerar inte programmet. Det fortsätter istället att fråga efter nya uppgifter till posten, men uppdaterar inget i databasen.
 
 **Potentiella förbättringar:**
-- Alla registreringar av nya, och uppdateringar av befintliga observationer, kräver kännedom om identifikationsnummer för aktuella monster, platser och jägare.
 - Datumsformat kunde valideras strängare (just nu accepteras alla TEXT-värden)
 - Menynavigering kunde förbättras med breadcrumbs
 v
@@ -249,6 +248,7 @@ Den största utmaningen var att hantera främmande nycklar korrekt och förstå 
   - Få hjälp med många kodifyllningar, se kommentarer i koden. Modellen hade även tillgång till kursens Github-repositories som data.
 
 ### Dokumentation och resurser
+- [C-Sharp](https://campusmolndaleducation.github.io/csharp_cmyh/C-Sharp/)
 - [Work with entity relationship table shapes in draw.io](https://www.drawio.com/blog/entity-relationship-tables)
 - [What is Third Normal Form (3NF)?](https://www.datacamp.com/tutorial/third-normal-form)
 - [SQLite C#: Connecting to SQLite databases](https://www.sqlitetutorial.net/sqlite-csharp/connect/)
@@ -256,7 +256,7 @@ Den största utmaningen var att hantera främmande nycklar korrekt och förstå 
 
 ### Kod från externa källor
 
-Om du använt kod från externa källor, dokumentera det här:
+- Kod från [mina kurskamraters uppgifter(https://github.com/orgs/Campus-Molndal-CLO25/repositories]) har AI-agenten TabbyML haft tillgång till. De rader kod-kompletteringar, se kodkommentarer, som jag infogat frånc agenten kan därmed baseras på dessa uppgifter.
 
 ```csharp
 // CSV-export-metoden inspirerad av exempel från Stack Overflow
