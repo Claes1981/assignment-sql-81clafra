@@ -20,14 +20,17 @@ Systemet gör det möjligt för jägare att:
 
 ### Huvudmeny
 ![Huvudmeny](screenshots/main_menu.png)
+
 *Programmets huvudmeny med navigation till olika funktioner*
 
 ### Hantera Monster
 ![Monster-hantering](screenshots/monster_management.png)
+
 *CRUD-gränssnitt för monsterhantering*
 
 ### Observation av monster
 ![Ny observation](screenshots/create_observation.png)
+
 *Formulär för att registrera nya monsterobservationer*
 
 
