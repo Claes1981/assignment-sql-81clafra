@@ -1,7 +1,7 @@
 # Monster Tracker – Claes Fransson
 
 **Kurs:** Databashantering och design
-**Datum:** 2 november 2025
+**Datum:** oktober 2025
 **GitHub:** https://github.com/Campus-Molndal-CLO25/assignment-sql-81clafra
 
 ---
@@ -86,7 +86,7 @@ Vid första körningen skapas automatiskt:
   - Radera monster (med hantering av FK-constraints)
 
 - **CRUD för Location**
-  - Registrera platser med namn, region och koordinater
+  - Registrera platser med namn och region
   - Lista alla platser
   - Uppdatera platsinformation
   - Radera platser
@@ -133,7 +133,7 @@ Vid första körningen skapas automatiskt:
 ### Tabellstruktur
 
 **Monster** (Id, Name, Type, DangerLevel)
-**Location** (Id, Name, Region, Coordinates)
+**Location** (Id, Name, Region)
 **Hunter** (Id, Name, ExperienceLevel)
 **Observation** (Id, MonsterId, LocationId, HunterId, Description, DateSeen)
 
@@ -164,17 +164,17 @@ MonsterTracker/
 │   └── Observation.cs        # Datamodell för observationer
 ├── Data/
 │   ├── DatabaseConnection.cs # Hanterar SQLite-anslutningar
+│   ├── DatabaseCreation.cs   # Skapar databasfil vid start
 │   ├── MonsterRepository.cs  # CRUD för Monster
 │   ├── LocationRepository.cs # CRUD för Location
 │   ├── HunterRepository.cs   # CRUD för Hunter
 │   └── ObservationRepository.cs # CRUD för Observation
 ├── Services/
-│   ├── MonsterTrackerFacade.cs # Facade-mönster
-│   └── DatabaseSeeder.cs     # Testdata-generering (VG)
+│   └──  MonsterTrackerFacade.cs # Facade-mönster
 ├── UI/
 │   └── ConsoleUI.cs          # Användarinteraktion
 ├── Program.cs                # Programinmatningspunkt
-└── monstertracker.db         # SQLite-databas (skapas vid körning)
+└── MonsterTracker.db         # SQLite-databas (skapas vid körning)
 ```
 
 ### Design patterns
@@ -215,24 +215,19 @@ MonsterTracker/
 
 ## 🐛 Kända buggar och begränsningar
 
-> **Viktigt:** Var ärlig om eventuella brister. Det visar mognad och ger läraren kontext.
-
-- Alla registreringar av nya, och uppdateringar av befintliga observationer, kräver kännedom om identifikationsnummer för aktuella monster, platser och jägare. Vidare, om användaren ger ett id-nummer för uppdatering som inte finns i databasen, reagerar inte programmet. Det fortsätter istället att fråga efter nya uppgifter till posten, men uppdaterar inget i databasen.
+- Alla registreringar av nya, och uppdateringar av befintliga observationer, kräver kännedom om identifikationsnummer för aktuella monster, platser och jägare. Vidare, om användaren ger ett id-nummer för uppdatering som inte finns i databasen, reagerar inte programmet. Det fortsätter istället att fråga efter nya uppgifter till posten, men uppdaterar inget i databasen, dock.
 
 **Potentiella förbättringar:**
 - Datumsformat kunde valideras strängare (just nu accepteras alla TEXT-värden)
 - Menynavigering kunde förbättras med breadcrumbs
-v
 
 ---
 
 ## 📖 Lärdomar och reflektion
 
-> **Tips:** Skriv 2-3 meningar om din största lärdom. Detta kompletterar din reflection.md.
-
 Genom detta projekt har jag fått djupare förståelse för databasnormalisering och varför 3NF är viktigt för att undvika dataduplicering. Implementeringen av Repository-mönstret och Facade visade tydligt värdet av separation of concerns, vilket gjorde koden lättare att testa och underhålla.
 
-Den största utmaningen var att hantera främmande nycklar korrekt och förstå när SQLite kastar FK-constraint-fel. Detta lärde mig vikten av robust felhantering i databasapplikationer.
+Den största utmaningen var att klura ut alla detaljer och hinna implementera allt inom tidsramen.
 
 ---
 
@@ -240,9 +235,11 @@ Den största utmaningen var att hantera främmande nycklar korrekt och förstå 
 
 ### Hjälp och samarbete
 
-- **AI-verktyg:** Använde Perplexity.ai för att:
-  - Ta reda på hur en SQL-schema-fil kan användas för att med C# skapa en tom SQLite databas, samt aktivera främmande nycklar i databasen. 
-  - Bli påmind om att metoder är private som standard i C# och därmed behöver texten "public" framför dem för att andra klasser ska komma åt dem. Vidare också att ickestatiska metoder behöver en instans av klassen först för att kunna användas.
+- **AI-verktyg:**
+
+  Använde Perplexity.ai för att:
+  - Ta reda på hur en SQL-schema-fil kan användas för att med C# skapa en tom SQLite-databas, samt aktivera främmande nycklar i databasen. 
+  - Bli påmind om att metoder är private som standard i C# och därmed behöver ordet "public" framför dem för att andra klasser ska komma åt dem. Vidare också att ickestatiska metoder först behöver en instans av klassen för att kunna användas.
   - Få en mall över hur på ett snyggt sätt implementera en textbaserad meny-funktion.
 
   Använde TabbyML Visual studio code-plugin tillsammans med modellen Qwen2.5-Coder-7B lokalt på datorn för att:
@@ -257,7 +254,7 @@ Den största utmaningen var att hantera främmande nycklar korrekt och förstå 
 
 ### Kod från externa källor
 
-- Kod från [mina kurskamraters uppgifter(https://github.com/orgs/Campus-Molndal-CLO25/repositories]) har AI-agenten TabbyML haft tillgång till. De rader kod-kompletteringar, se kodkommentarer, som jag infogat frånc agenten kan därmed baseras på dessa uppgifter.
+- Kod från [mina kurskamraters uppgifter](https://github.com/orgs/Campus-Molndal-CLO25/repositories]) har AI-agenten TabbyML haft tillgång till. De rader kod-kompletteringar, se kodkommentarer, som jag infogat från agenten kan därmed baseras på dessa uppgifter.
 
 ```csharp
 // CSV-export-metoden inspirerad av exempel från Stack Overflow
@@ -286,4 +283,4 @@ Detta projekt är skapat som en del av kursen Databashantering och design vid Ca
 ---
 
 **Skapad:** oktober 2025
-**Senast uppdaterad:** [Datum]
+**Senast uppdaterad:** 31 oktober 2025
