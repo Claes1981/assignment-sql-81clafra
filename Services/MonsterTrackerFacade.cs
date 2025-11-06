@@ -130,5 +130,129 @@ namespace assignment_sql_81clafra.Services
         // TODO: Hämta monster av typ, sedan deras observationer
         // Detta kräver anrop till både MonsterRepository och ObservationRepository
         // }
+
+        public void HandleAddMonster()
+        {
+            Console.WriteLine("\n--- Lägg till nytt monster. ---");
+
+            // 1. Fråga användaren efter namn
+            Console.Write("namn: ");
+            string? name = Console.ReadLine();
+
+            // 2. Fråga användaren efter typ av monster
+            Console.Write("typ: ");
+            string? type = Console.ReadLine();
+
+            // 3. Fråga användaren efter riskgrad
+            string? dangerLevel = InputDangerLevel();
+
+            AddMonster(name, type, dangerLevel);
+
+            // 4. Skriv ut ett bekräftelsemeddelande
+            Console.WriteLine("✅ Monstret har lagts till!");
+        }
+
+        public void HandleUpdateMonster()
+        {
+            Console.WriteLine("\n--- Uppdatera monster. ---");
+
+            // Först visar vi alla monster så användaren ser vilka som finns
+            HandleOutputAllMonsters();
+
+            // 1. Fråga vilket Id användaren vill uppdatera
+            Console.Write("\nAnge id på monstret du vill uppdatera: ");
+
+            if (!int.TryParse(Console.ReadLine(), out int idToUpdate))
+            {
+                Console.WriteLine("Felaktigt id har angivits!");
+                return;
+            }
+
+            // 2. Fråga efter nytt namn
+            Console.Write("nytt namn: ");
+            string? newName = Console.ReadLine();
+
+            // 3. Fråga efter ny typ
+            Console.Write("ny typ: ");
+            string? newType = Console.ReadLine();
+
+            // 4. Fråga efter ny dangerlevel
+            string? newDangerLevel = InputDangerLevel();
+
+            UpdateMonster(idToUpdate, newName, newType, newDangerLevel);
+        }
+
+        public void HandleDeleteMonster()
+        {
+            Console.WriteLine("\n--- Ta bort monster. ---");
+
+            // Visa alla monster först
+            HandleOutputAllMonsters();
+
+            // 1. Fråga vilket Id användaren vill ta bort
+            Console.Write("\nAnge id på monstret du vill ta bort: ");
+
+            if (!int.TryParse(Console.ReadLine(), out int idToDelete))
+            {
+                Console.WriteLine("Felaktigt id har angivits!");
+                return;
+            }
+
+            // 2. Fråga om användaren är säker (säkerhetscheck!)
+            Console.Write($"Är du säker på att du vill ta bort monstret med id {idToDelete}? (ja/nej): ");
+            string answer = Console.ReadLine();
+
+            if (answer.ToLower() != "ja")
+            {
+                Console.WriteLine("avbrutet");
+                return;
+            }
+
+            try
+            {
+                DeleteMonster(idToDelete);
+                Console.WriteLine("✅ Monstret är borttaget!");
+            }
+            catch (SQLiteException ex)
+            {
+                if (ex.Message.Contains("FOREIGN KEY constraint failed"))
+                    Console.WriteLine("Kan inte radera eftersom monstret har registrerade observationer!");
+                else
+                    Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ett fel uppstod: {ex.Message}");
+            }
+        }
+
+        public void HandleOutputAllMonsters()
+        {
+            Console.WriteLine("\n--- alla monster ---");
+
+            List<Monster> monsters = GetAllMonsters();
+
+            foreach (Monster monster in monsters)
+            {
+                Console.WriteLine($"id: {monster.Id}, namn: {monster.Name}, typ: {monster.Type}, dangerlevel: {monster.DangerLevel}");
+            }
+        }
+
+        private string? InputDangerLevel()
+        {
+            string[] validDangerLevels = { "Low", "Medium", "High", "Extreme" };
+            string? dangerLevel;
+            do
+            {
+                Console.Write("dangerlevel: Low, Medium, High eller Extreme: ");
+                dangerLevel = Console.ReadLine();
+                if (!validDangerLevels.Contains(dangerLevel))
+                {
+                    Console.WriteLine("Felaktigt dangerlevel har angivits.");
+                }
+            }
+            while (!validDangerLevels.Contains(dangerLevel));
+            return dangerLevel;
+        }
     }
 }
