@@ -1,7 +1,6 @@
 # Reflektion över Monster Tracker
 
 **Namn:** Claes Fransson
-**Datum:** [Datum]
 
 ---
 
@@ -80,14 +79,6 @@ Mycket var nytt för mig, såsom normalisering och nycklar. Också att lågnivå
 
 Att icke statiska metoder kräver att en instans först skapas av dem, och att det nog är rekommenderat att ha ickestatiska metoder för databashantering.
 Namnet facade var nytt för mig. Även behovet av modell-klasser i C# för databas-objekten, även om jag nog inte riktigt greppat de beskrivande klassernas syntax än.
-
-### Vad har du lärt dig om problemlösning?
-
----
-
-**Slutkommentar:**
-
-[Avsluta med några meningar om helhetsintrycket av projektet. Vad var roligast? Vad var mest lärorikt?]
 
 ---
 

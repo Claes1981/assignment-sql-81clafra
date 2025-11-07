@@ -256,16 +256,6 @@ Den största utmaningen var att klura ut alla detaljer och hinna implementera al
 
 - Kod från [mina kurskamraters uppgifter](https://github.com/orgs/Campus-Molndal-CLO25/repositories]) har AI-agenten TabbyML haft tillgång till. De rader kod-kompletteringar, se kodkommentarer, som jag infogat från agenten kan därmed baseras på dessa uppgifter.
 
-```csharp
-// CSV-export-metoden inspirerad av exempel från Stack Overflow
-// https://stackoverflow.com/questions/xxxxx
-// Anpassad för att passa Monster Tracker-domänen
-public void ExportToCsv(List<Observation> observations, string filename)
-{
-    // Min implementation...
-}
-```
-
 ---
 
 ## 📄 Licens
